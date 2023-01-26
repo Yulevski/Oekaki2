@@ -3,7 +3,15 @@ import "./Main.css";
 import pic from "./tree_green.png"; 
 //import {ReactMarkdown} from "react-markdown/lib/react-markdown";
 
-const Main = ({activeNote,notes}) => {
+const Main = ({activeNote,setActiveNote,notes}) => {
+
+  const onEditNote =()=>{
+    onUpdateNote({
+      ...activeNote,
+      modDate: Date.now(),
+    });
+  };
+
   if(!activeNote){
     return <div className='no-active-note'>no note is selected</div>
   }
@@ -14,7 +22,11 @@ const Main = ({activeNote,notes}) => {
         {/* <img src={pic} alt="picture" />
         <img src={pic} alt="picture" />  */}
         {notes.map((note)=>(
-               <img src={note.picturePath} alt="picture" key={note.id} /> 
+               <img src={note.picturePath} alt="picture" key={note.id} 
+              //  onClick={()=>setActiveNote(note.id) } 
+               onClick={()=>onEditNote(note.id)}
+               
+               /> 
           
             ))}       
         {/* <input type="text"/>
