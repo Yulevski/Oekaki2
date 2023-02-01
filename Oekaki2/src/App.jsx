@@ -9,8 +9,6 @@ function App() {
   //ノートを追加する為配列として保持
   //notesが複数のノートを保持 setNotesでnotes更新
   const [notes, setNotes] = useState([]);
-  //ノートの状態を判定する falseなので何もされない
-  const [activeNote,setActiveNote]=useState(false);
 
   const onAddNote=()=>{
     //console.log("new note");
@@ -26,7 +24,7 @@ function App() {
     //新しいノートを追加するよ
     setNotes([...notes,newNote]);
     //setNotes(newNote);
-    console.log("notes is",notes);
+    //console.log("notes is",notes);
   };
 
   const onDeleteNote=(id)=>{
@@ -55,18 +53,14 @@ function App() {
       setNotes(updatedNotesArray);
     };
 
-
   return (
     <div className="App">
         <Sidebar 
         onAddNote={onAddNote} 
         notes={notes} 
         onDeleteNote={onDeleteNote}
-        activeNote={activeNote}
-        setActiveNote={setActiveNote}
         />
-        <Main activeNote={getActiveNote()}
-        setActiveNote={setActiveNote}
+        <Main
         notes={notes} 
         onUpdateNote={onUpdateNote}
         />

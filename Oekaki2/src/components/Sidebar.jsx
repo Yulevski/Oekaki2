@@ -1,11 +1,10 @@
 import React from "react";
 import "./Sidebar.css";
 
-const Sidebar = ({onAddNote, notes, onDeleteNote,activeNote,setActiveNote}) => {
-    console.log("Snotes is ", notes);
-    console.log("activeNote is",activeNote);
-    console.log("setActiveNots is",setActiveNote);
-    console.log("notes is", notes);
+const Sidebar = ({onAddNote, notes, onDeleteNote}) => {
+    // console.log("Snotes is ", notes);
+   
+    // console.log("notes is", notes);
 
     const sortedNotes = notes.sort((a,b)=>b.modDate-a.modDate);
 
@@ -19,14 +18,8 @@ const Sidebar = ({onAddNote, notes, onDeleteNote,activeNote,setActiveNote}) => {
         <div className="app-sidebar-notes">
             {/* ↓notesの値をnoteへ */}
             {sortedNotes.map((note)=>(
-                <div>
-                {/* <div onClick={()=> setActiveNote(note.id)}> */}
-                {/* <div className={`app-sidebar-note ${note.id === activeNote && "active"}`}  */}
-                {/* // key={note.id} //noteのidを送る
-                 onClick={()=> setActiveNote(note.id)}
-                 > */}
-                        {/* setActuveNoteで選択されたノートのidを取得
-                        ${note.id === activeNote && "active"}でmap関数でactiveNote(id)と全部のidを比較 */}
+                <div key={note.id}>
+              
                     <div className="sidebar-note-title">
                         <strong>{note.title}</strong>
                         <div>
