@@ -19,9 +19,12 @@ const Sidebar = ({onAddNote, notes, onDeleteNote,activeNote,setActiveNote}) => {
         <div className="app-sidebar-notes">
             {/* ↓notesの値をnoteへ */}
             {sortedNotes.map((note)=>(
-                <div className={`app-sidebar-note ${note.id === activeNote && "active"}`} 
-                key={note.id} //noteのidを送る
-                onClick={()=> setActiveNote(note.id)}>
+                <div>
+                {/* <div onClick={()=> setActiveNote(note.id)}> */}
+                {/* <div className={`app-sidebar-note ${note.id === activeNote && "active"}`}  */}
+                {/* // key={note.id} //noteのidを送る
+                 onClick={()=> setActiveNote(note.id)}
+                 > */}
                         {/* setActuveNoteで選択されたノートのidを取得
                         ${note.id === activeNote && "active"}でmap関数でactiveNote(id)と全部のidを比較 */}
                     <div className="sidebar-note-title">
