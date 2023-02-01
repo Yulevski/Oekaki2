@@ -12,14 +12,14 @@ const Main = ({notes,onUpdateNote}) => {
       picturePath:pic,
     });
   };
-
+  const interact =useInteractJS()
   return (
     <div className='app-main'>
       <div className='app-main-note-edit'>
+        ref={interact.ref}
         {notes.map((note)=>(
-               <img src={note.picturePath} alt="picture" key={note.id} 
-             
-               onClick={()=>onEditNote(note.id)}
+               <img src={note.picturePath} alt="picture" key={note.id} style={{...interact.style}}
+                            onClick={()=>onEditNote(note.id)}
                /> 
           
             ))}       
