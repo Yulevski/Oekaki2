@@ -16,14 +16,15 @@ const Main = ({notes,onUpdateNote}) => {
  
   return (
     <div className='app-main'>
-      <Draggable defaultPosition={{x: 0, y: 0}}>
-        <div style={{ position: 'absolute' }} className='app-main-note-edit'>
-          <p>
-          {notes.map((note)=>(<img src={note.picturePath} alt="picture" key={note.id} onClick={()=>onEditNote(note.id)}/> 
+      
+                 {notes.map((note)=>(
+                 
+                 <Draggable defaultPosition={{x: 0, y: 0}}>
+                    <div style={{ position: 'absolute' }} className='app-main-note-edit'>
+                        <img src={note.picturePath} alt="picture" key={note.id} onClick={()=>onEditNote(note.id)}/> 
+                    </div>
+                </Draggable>
                         ))}  
-          </p>
-        </div>
-      </Draggable>
      </div>
   );
 };
