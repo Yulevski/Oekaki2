@@ -3,6 +3,8 @@ import "./Main.css";
 import pic from "./tree_green.png"; 
 //import {ReactMarkdown} from "react-markdown/lib/react-markdown";
 import Draggable from 'react-draggable';
+import Moveable from 'react-moveable';
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 const Main = ({notes,onUpdateNote}) => {
 
@@ -15,17 +17,19 @@ const Main = ({notes,onUpdateNote}) => {
   };
  
   return (
-    <div className='app-main'>
-      
-                 {notes.map((note)=>(
-                 
-                 <Draggable defaultPosition={{x: 0, y: 0}}>
-                    <div style={{ position: 'absolute' }} className='app-main-note-edit'>
-                        <img src={note.picturePath} alt="picture" key={note.id} onClick={()=>onEditNote(note.id)}/> 
-                    </div>
+  
+            <div className='app-main'>
+              {notes.map((note)=>(     
+                              
+                <Draggable defaultPosition={{x: 0, y: 0}}>
+                   <div style={{ position: 'absolute' }} className='app-main-note-edit'>
+                          <img src={note.picturePath} alt="picture" key={note.id} onClick={()=>onEditNote(note.id) }  Draggable="false"/> 
+                   </div>
                 </Draggable>
-                        ))}  
-     </div>
+                            
+                     ))}  
+            </div>
+
   );
 };
 
