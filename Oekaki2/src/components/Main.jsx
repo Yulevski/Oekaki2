@@ -101,7 +101,7 @@ const App = () => {
     <div style={{ display: "flex" }}>
       <div>
         <h1>Canvas 1</h1>
-        <button onClick={() => addRect(canvas1)}>Rectangle</button>
+        <button onClick={() => addRect(canvas1)}>Add Rectangle</button>
         <button onClick={() => addPic(canvas1)}>Add Pic</button>
         {/* <button onClick={() => console.log(canvas1.getActiveObject())}>
           Test

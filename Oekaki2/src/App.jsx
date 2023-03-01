@@ -55,11 +55,11 @@ function App() {
 
   return (
     <div className="App">
-        <Sidebar 
+        {/* <Sidebar 
         onAddNote={onAddNote} 
         notes={notes} 
         onDeleteNote={onDeleteNote}
-        />
+        /> */}
         <Main
         notes={notes} 
         onUpdateNote={onUpdateNote}
