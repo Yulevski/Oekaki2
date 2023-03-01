@@ -5,15 +5,28 @@ import { fabric } from "fabric";
 import pic from "./tree_green.png";
 
 const App = () => {
-  const [canvas, setCanvas] = useState("");
+  const [canvas1, setCanvas1] = useState("");
+  const [canvas2, setCanvas2] = useState("");
+  
   useEffect(() => {
-    const canvas = new fabric.Canvas("canvas", {
+    const canvas1 = new fabric.Canvas("canvas1", {
       height: 800,
-      width: 800,
+      width: 400,
       backgroundColor: "pink",
     });
+    setCanvas1(canvas1);
+    return () => {
+      canvas1.dispose();
+    };
+  }, []);
 
-    canvas.on("mouse:down", (options) => {
+  useEffect(() => {
+    const canvas2 = new fabric.Canvas("canvas2", {
+      height: 800,
+      width: 400,
+      backgroundColor: "lightblue",
+    });
+    canvas2.on("mouse:down", (options) => {
       const clickedObject = options.target;
       if (clickedObject instanceof fabric.Rect) {
         console.log("Clicked rect name is", clickedObject.name);
@@ -24,12 +37,10 @@ const App = () => {
       if (clickedObject instanceof fabric.Textbox) {
         console.log("Clicked rect name is", clickedObject.name);
       }
-
     });
-
-    setCanvas(canvas);
+    setCanvas2(canvas2);
     return () => {
-      canvas.dispose();
+      canvas2.dispose();
     };
   }, []);
 
@@ -53,7 +64,7 @@ const App = () => {
   };
 
   const addText = (canvi) => {
-    const activeObject = canvi.getActiveObject();
+    const activeObject = canvas1.getActiveObject();
     if (activeObject instanceof fabric.Rect || activeObject instanceof fabric.Image) {
       const textBox = new fabric.Textbox("", {
         name: activeObject.name,
@@ -62,7 +73,8 @@ const App = () => {
         width: 200,
         fontSize: 18,
         fontFamily: "Arial",
-        fill: "#000000",
+        fill: "#111111",
+        backgroundColor: "#CCCCCC",
       });
       canvi.add(textBox);
       canvi.setActiveObject(textBox);
@@ -71,19 +83,27 @@ const App = () => {
     }
   };
   
-  
   return (
-    <div>
-      <h1>Fabric.js</h1>
-      <button onClick={() => addRect(canvas)}>Rectangle</button>
-      <button onClick={() => addPic(canvas)}>Add Pic</button>
-      <button onClick={() => addText(canvas)}>Add Text</button>
-      <button onClick={() => console.log(canvas.getActiveObject())}>
-        Test
-      </button>
-      <canvas id="canvas" />
+    <div style={{ display: "flex" }}>
+      <div>
+        <h1>Canvas 1</h1>
+        <button onClick={() => addRect(canvas1)}>Rectangle</button>
+        <button onClick={() => addPic(canvas1)}>Add Pic</button>
+        <button onClick={() => console.log(canvas1.getActiveObject())}>
+          Test
+        </button>
+        <canvas id="canvas1" />
+      </div>
+      <div>
+        <h1>Canvas 2</h1>
+      
+        <button onClick={() => addText(canvas2)}>Add Text</button>
+        <button onClick={() => console.log(canvas2.getActiveObject())}>
+          Test
+        </button>
+        <canvas id="canvas2" />
+      </div>
     </div>
   );
 };
-
 export default App;
