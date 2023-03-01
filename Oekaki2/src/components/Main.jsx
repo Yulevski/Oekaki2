@@ -14,6 +14,20 @@ const App = () => {
       width: 400,
       backgroundColor: "pink",
     });
+
+    canvas1.on("mouse:down", (options) => {
+      const clickedObject = options.target;
+      if (clickedObject instanceof fabric.Rect) {
+        console.log("Clicked rect name is", clickedObject.name);
+      }
+      if (clickedObject instanceof fabric.Image) {
+        console.log("Clicked rect name is", clickedObject.name);
+      }
+      if (clickedObject instanceof fabric.Textbox) {
+        console.log("Clicked rect name is", clickedObject.name);
+      }
+    });
+
     setCanvas1(canvas1);
     return () => {
       canvas1.dispose();
