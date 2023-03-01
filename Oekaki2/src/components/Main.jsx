@@ -89,18 +89,18 @@ const App = () => {
         <h1>Canvas 1</h1>
         <button onClick={() => addRect(canvas1)}>Rectangle</button>
         <button onClick={() => addPic(canvas1)}>Add Pic</button>
-        <button onClick={() => console.log(canvas1.getActiveObject())}>
+        {/* <button onClick={() => console.log(canvas1.getActiveObject())}>
           Test
-        </button>
+        </button> */}
         <canvas id="canvas1" />
       </div>
       <div>
         <h1>Canvas 2</h1>
       
         <button onClick={() => addText(canvas2)}>Add Text</button>
-        <button onClick={() => console.log(canvas2.getActiveObject())}>
+        {/* <button onClick={() => console.log(canvas2.getActiveObject())}>
           Test
-        </button>
+        </button> */}
         <canvas id="canvas2" />
       </div>
     </div>
