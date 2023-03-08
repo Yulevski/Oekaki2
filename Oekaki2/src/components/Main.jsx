@@ -69,8 +69,6 @@ const App = () => {
         ctx.font = '20px Arial';
         ctx.fillStyle = '#333';
         ctx.fillText(this.textboxes[0], -this.width/2 + 10, -this.height/2 + 25);
-        ctx.fillText(this.textboxes[1], -this.width/2 + 10, -this.height/2 + 50);
-        ctx.fillText(this.textboxes[2], -this.width/2 + 10, -this.height/2 + 75);
       }
     });
 
@@ -81,8 +79,6 @@ const App = () => {
       name: "rect-" + Date.now(),
       textboxes: [
         textbox1 ? textbox1 : "Text1",
-        textbox2 ? textbox2 : "Text2",
-        textbox3 ? textbox3 : "Text3"
       ]
     });
     console.log("name is", rect.name);
@@ -109,8 +105,6 @@ const App = () => {
       <div className="textBox">
         <h1>Textbox Contents</h1>
         <input type="text" value={textbox1} onChange={handleTextbox1Change} />
-        <input type="text" value={textbox2} onChange={handleTextbox2Change} />
-        <input type="text" value={textbox3} onChange={handleTextbox3Change} />
       </div>
     </div>
   );
