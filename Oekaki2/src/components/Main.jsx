@@ -12,6 +12,18 @@ const App = () => {
   const [textbox2, setTextbox2] = useState("");
   const [textbox3, setTextbox3] = useState("");
 
+  const handleTextbox1Change = (event) => {
+    setTextbox1(event.target.value);
+  };
+  
+  const handleTextbox2Change = (event) => {
+    setTextbox2(event.target.value);
+  };
+  
+  const handleTextbox3Change = (event) => {
+    setTextbox3(event.target.value);
+  };
+
   useEffect(() => {
     const canvas = new fabric.Canvas("canvas", {
       height: canvasHeight,
@@ -96,9 +108,9 @@ const App = () => {
       </div>
       <div className="textBox">
         <h1>Textbox Contents</h1>
-        <p>{textbox1 ? textbox1 : "Text1"}</p>
-        <p>{textbox2 ? textbox2 : "Text2"}</p>
-        <p>{textbox3 ? textbox3 : "Text3"}</p>
+        <input type="text" value={textbox1} onChange={handleTextbox1Change} />
+        <input type="text" value={textbox2} onChange={handleTextbox2Change} />
+        <input type="text" value={textbox3} onChange={handleTextbox3Change} />
       </div>
     </div>
   );
