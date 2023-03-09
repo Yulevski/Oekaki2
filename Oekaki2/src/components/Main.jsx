@@ -9,20 +9,18 @@ const canvasHeight = 800;
 const App = () => {
   const [canvas, setCanvas] = useState(null);
   const [textbox1, setTextbox1] = useState("");
-  const [textbox2, setTextbox2] = useState("");
-  const [textbox3, setTextbox3] = useState("");
 
   const handleTextbox1Change = (event) => {
+    const selectedObject = canvas.getActiveObject();
+    if (selectedObject instanceof fabric.Rect) {
+      const updatedTextboxes = [...selectedObject.textboxes];
+      updatedTextboxes[0] = event.target.value;
+      selectedObject.set("textboxes", updatedTextboxes);
+      canvas.renderAll();
+    }
     setTextbox1(event.target.value);
   };
   
-  const handleTextbox2Change = (event) => {
-    setTextbox2(event.target.value);
-  };
-  
-  const handleTextbox3Change = (event) => {
-    setTextbox3(event.target.value);
-  };
 
   useEffect(() => {
     const canvas = new fabric.Canvas("canvas", {
