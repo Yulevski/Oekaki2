@@ -81,10 +81,17 @@ const App = () => {
         textbox1 ? textbox1 : "Text1",
       ]
     });
+      // Add event listeners to update the textboxes when their values change
+  rect.textboxes[0] = textbox1;
+  rect.on('modified', () => {
+    setTextbox1(rect.textboxes[0]);
+  });
+  
     console.log("name is", rect.name);
     canvas.add(rect);
     canvas.renderAll();
   };
+  
 
   const addPic = (canvas) => {
     fabric.Image.fromURL(pic, function (img) {
