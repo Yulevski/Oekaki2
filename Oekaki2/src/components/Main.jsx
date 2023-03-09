@@ -1,115 +1,109 @@
 
+// import React from 'react';
+// import "./Main.css";
 import React, { useState, useEffect } from "react";
 import { fabric } from "fabric";
 import pic from "./tree_green.png";
 
-const canvasWidth = 400;
-const canvasHeight = 800;
 
 const App = () => {
-  const [canvas, setCanvas] = useState(null);
+  const [canvas1, setCanvas1] = useState("");
   const [textbox1, setTextbox1] = useState("");
-
-  const handleTextbox1Change = (event) => {
-    const selectedObject = canvas.getActiveObject();
-    if (selectedObject instanceof fabric.Rect) {
-      const updatedTextboxes = [...selectedObject.textboxes];
-      updatedTextboxes[0] = event.target.value;
-      selectedObject.set("textboxes", updatedTextboxes);
-      canvas.renderAll();
-    }
-    setTextbox1(event.target.value);
-  };
+  // const [canvas2, setCanvas2] = useState("");
   
-
   useEffect(() => {
-    const canvas = new fabric.Canvas("canvas", {
-      height: canvasHeight,
-      width: canvasWidth,
+    const canvas1 = new fabric.Canvas("canvas1", {
+      height: 800,
+      width: 400,
       backgroundColor: "pink",
     });
 
-    canvas.on("mouse:down", (options) => {
+    canvas1.on("mouse:down", (options) => {
       const clickedObject = options.target;
       if (clickedObject instanceof fabric.Rect) {
         console.log("Clicked rect name is", clickedObject.name);
-        console.log("Textboxes for selected rectangle:", clickedObject.textboxes);
-        canvas.setActiveObject(clickedObject);
-        canvas.renderAll();
       }
       if (clickedObject instanceof fabric.Image) {
-        console.log("Clicked pic name is", clickedObject.name);
+        console.log("Clicked rect name is", clickedObject.name);
       }
       if (clickedObject instanceof fabric.Textbox) {
-        console.log("Clicked textbox text is", clickedObject.textbox1);
+        console.log("Clicked rect name is", clickedObject.name);
       }
     });
 
-    setCanvas(canvas);
+    setCanvas1(canvas1);
     return () => {
-      canvas.dispose();
+      canvas1.dispose();
     };
   }, []);
 
-  const addRect = (canvas) => {
-    const RectWithText = fabric.util.createClass(fabric.Rect, {
-      initialize(options) {
-        this.callSuper('initialize', options);
-        this.textboxes = [];
-      },
-      toObject() {
-        return fabric.util.object.extend(this.callSuper('toObject'), {
-          textboxes: this.textboxes
-        });
-      },
-      _render(ctx) {
-        this.callSuper('_render', ctx);
-        ctx.font = '20px Arial';
-        ctx.fillStyle = '#333';
-        ctx.fillText(this.textboxes[0], -this.width/2 + 10, -this.height/2 + 25);
-      }
-    });
 
-    const rect = new RectWithText({
+  const addRect = (canvi) => {
+    const rect = new fabric.Rect({
       height: 280,
       width: 200,
       fill: "yellow",
       name: "rect-" + Date.now(),
-      textboxes: [
-        textbox1 ? textbox1 : "Text1",
-      ]
     });
-      // Add event listeners to update the textboxes when their values change
-    rect.textboxes[0] = textbox1;
-    rect.on('modified', () => {
-      setTextbox1(rect.textboxes[0]);
-    });
-    
     console.log("name is", rect.name);
-    canvas.add(rect);
-    canvas.renderAll();
+    canvi.add(rect);
+    
+    const textBox = new fabric.Textbox("", {
+      name: rect.name,
+      left: rect.left + 20,
+      top: rect.top + 20,
+      width: 200,
+      fontSize: 18,
+      fontFamily: "Arial",
+      fill: "#111111",
+      backgroundColor: "#CCCCCC",
+    });
+    canvi.add(textBox);
+    canvi.renderAll();
   };
-  
 
-  const addPic = (canvas) => {
-    fabric.Image.fromURL(pic, function (img) {
+  const addPic = (canvi) => {
+    fabric.Image.fromURL(pic, function(img) {
       img.set({ name: "pic-" + Date.now() });
-      canvas.add(img);
+      canvi.add(img);
     });
   };
 
-
+  // const addText = (canvi) => {
+  //   const activeObject = canvas1.getActiveObject();
+  //   if (activeObject instanceof fabric.Rect || activeObject instanceof fabric.Image) {
+  //     const textBox = new fabric.Textbox("", {
+  //       name: activeObject.name,
+  //       left: activeObject.left + 20,
+  //       top: activeObject.top + 20,
+  //       width: 200,
+  //       fontSize: 18,
+  //       fontFamily: "Arial",
+  //       fill: "#111111",
+  //       backgroundColor: "#CCCCCC",
+  //     });
+  //     canvi.add(textBox);
+  //     canvi.setActiveObject(textBox);
+  //     textBox.enterEditing();
+  //     textBox.hiddenTextarea.focus();
+  //   }
+  // };
+  
   return (
     <div style={{ display: "flex" }}>
       <div>
         <h1>Canvas 1</h1>
-        <button onClick={() => addRect(canvas)}>Add Rectangle</button>
-        <button onClick={() => addPic(canvas)}>Add Pic</button>
-        <canvas id="canvas" width={canvasWidth} height={canvasHeight} />
+        <button onClick={() => addRect(canvas1)}>Add Rectangle</button>
+        <button onClick={() => addPic(canvas1)}>Add Pic</button>
+        {/* <button onClick={() => console.log(canvas1.getActiveObject())}>
+          Test
+        </button> */}
+        <canvas id="canvas1" />
       </div>
+
       <div className="textBox">
         <h1>Textbox Contents</h1>
-        <input type="text" value={textbox1} onChange={handleTextbox1Change} />
+        <input type="text" />
       </div>
     </div>
   );
