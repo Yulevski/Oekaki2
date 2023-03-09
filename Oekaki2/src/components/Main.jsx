@@ -82,11 +82,11 @@ const App = () => {
       ]
     });
       // Add event listeners to update the textboxes when their values change
-  rect.textboxes[0] = textbox1;
-  rect.on('modified', () => {
-    setTextbox1(rect.textboxes[0]);
-  });
-  
+    rect.textboxes[0] = textbox1;
+    rect.on('modified', () => {
+      setTextbox1(rect.textboxes[0]);
+    });
+    
     console.log("name is", rect.name);
     canvas.add(rect);
     canvas.renderAll();
