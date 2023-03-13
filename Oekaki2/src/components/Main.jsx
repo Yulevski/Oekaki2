@@ -131,7 +131,7 @@ var RectWithText = fabric.util.createClass(fabric.Rect, {
     var texts = this.get("texts");
     texts[key] = text;
     this.set("texts", texts);
-    this.canvas.renderAll();
+    //this.canvas.renderAll();
   },
 });
 
