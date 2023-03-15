@@ -6,13 +6,13 @@ import pic from "./tree_green.png";
 
 const App = () => {
   const [canvas1, setCanvas1] = useState("");
-  const [textbox1, setTextbox1] = useState("");
   // const [canvas2, setCanvas2] = useState("");
   const [texts, setTexts] = useState({
+    //図形に対する感情を書くテキストエリアの集合を連想配列の状態として管理するために設定
     descriptionColor: "",
     descriptionPosition: "",
   });
-  const [clickedObject, setClickedObject] = useState(null);
+  const [clickedObject, setClickedObject] = useState(null); //アクティブなオブジェクトを状態として管理するために設定
 
   useEffect(() => {
     const canvas1 = new fabric.Canvas("canvas1", {
@@ -24,12 +24,14 @@ const App = () => {
     canvas1.on("mouse:down", (options) => {
       const clickedObject = options.target;
       if (clickedObject instanceof fabric.Rect) {
+        //RectWithTextがクリックされたら、
         console.log(
           "Clicked rect name is",
           clickedObject.texts.descriptionColor
         );
-        setClickedObject(clickedObject);
+        setClickedObject(clickedObject); //クリックされたオブジェクトを状態に設定
         setTexts({
+          //クリックされたオブジェクトのテキストを、テキストエリアに描画するために設定
           descriptionColor: clickedObject.texts.descriptionColor,
           descriptionPosition: clickedObject.texts.descriptionPosition,
         });
@@ -68,9 +70,10 @@ const App = () => {
   };
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setTexts({ ...{ name: value } });
-    clickedObject.setText(name, e.target.value);
+    //テキストエリア内が変化した時に発火する関数
+    const { name, value } = e.target; //文法がわからなければdestructuringで調べる。テキストエリアのhtml要素のnameとvalueをそれぞれ同名の変数に格納
+    setTexts({ ...{ name: value } }); //変化したテキストエリアの状態を更新
+    clickedObject.setText(name, e.target.value); //クリックされた（アクティブな）RectWithTextのテキストプロパティを更新
   };
 
   return (
@@ -131,7 +134,6 @@ var RectWithText = fabric.util.createClass(fabric.Rect, {
     var texts = this.get("texts");
     texts[key] = text;
     this.set("texts", texts);
-    //this.canvas.renderAll();
   },
 });
 
