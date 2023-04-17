@@ -1,56 +1,28 @@
-.app-main{
+/* .app-main{
     width: 70%;
     height: 100vh;
-}
+} */
 
-.app-main-note-edit,
-.app-main-note-preview{
-    height:50vh;
-}
-
-.app-main-note-edit{
-    padding: 25px;
-}
-
-.app-main-note-edit input,
-textarea{
-    display: block; /* 縦に並べたい */
-    border: 1px solid #ddd;
-    margin-bottom: 20px;
-    width: 100%;
-    height: 40vh;
-    padding: 5px;
-    resize: none;
-    font-size: 16px;
-
-}
-
-.app-main-note-edit input{
-    height: 5vh;
-    font-size: 2rem;
-}
-
-.app-main-note-preview{
-    border-top: 2px solid #ddd;
-    /* 飛び出た分はスクロール */
-    overflow-y: scroll;
-    background: rgba(0,0,0,0.04);
-}
-
-.preview-title{
-    padding: 25px 25px 0 25px;
-    margin: 0;
-}
-.markdown-preview{
-    padding: 0 25px 25px 25px;
-    line-height: 2rem;
-}
-
-.no-active-note{
-    width: 70%;
+.buttons{
+    /* flex-basis: 15%; */
+    width:19%;
     height: 100vh;
-    line-height: 100vh;
-    text-align: center;
-    font-size: 2rem;
-    color: #999;
+    /* padding: 10px; */
+    /* margin: 10px; */
+    background-color: #dddddd;
 }
+
+
+.textBox {
+    /* flex-basis: 15%; */
+    width:19%;
+    background-color: #dddddd;
+    /* padding: 10px; */
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    /* margin: 10px; */
+  }
+
+  .canvas1{
+    background-color: rgb(192, 192, 255);
+  }
