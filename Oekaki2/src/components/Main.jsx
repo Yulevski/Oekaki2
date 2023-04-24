@@ -1,5 +1,5 @@
 // import React from 'react';
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import { fabric } from "fabric";
 import pic from "./tree_green.png";
 import './Main.css';
@@ -90,8 +90,13 @@ const App = () => {
 
   const addPic = (canvi) => {
     fabric.Image.fromURL(pic, function (img) {
-      img.set({ name: "pic-" + Date.now() });
-      canvi.add(img);
+      const imgWithText = new ImageWithText(img.toObject());
+      imgWithText.set({ name: "pic-" + Date.now() });
+      // const imgWithText = new ImageWithText(img.clone());
+      canvi.add(imgWithText);
+      // canvi.add(img);
+      console.log("img name is", imgWithText.name);
+
     });
   };
 
@@ -99,7 +104,9 @@ const App = () => {
     //テキストエリア内が変化した時に発火する関数
     const { name, value } = e.target; //文法がわからなければdestructuringで調べる。テキストエリアのhtml要素のnameとvalueをそれぞれ同名の変数に格納
     setTexts({ ...{ name: value } }); //変化したテキストエリアの状態を更新
-    clickedObject.setText(name, e.target.value); //クリックされた（アクティブな）RectWithTextのテキストプロパティを更新
+    // setTexts(prevState => ({ ...prevState, [name]: value }));
+    // clickedObject.setText(name, e.target.value); //クリックされた（アクティブな）RectWithTextのテキストプロパティを更新
+    clickedObject.setText("descriptionColor", e.target.value);
   };
 
   return (
@@ -107,8 +114,8 @@ const App = () => {
       
           <div className="buttons">
               {/* <h1>buttons</h1> */}
-              <button onClick={() => addRect(canvas1)}><img src="./red_rectangle.png" style={{width:"100px"}}/></button>
-              <button onClick={() => addPic(canvas1)}><img src="./tree_green.png" style={{width:"100px"}}/></button>
+              <button onMouseDown={() => addRect(canvas1)}><img src="./red_rectangle.png" style={{width:"100px"}}/></button>
+              <button onMouseDown={() => addPic(canvas1)}><img src="./tree_green.png" style={{width:"100px"}}/></button>
               {/* <button onClick={() => console.log(canvas1.getActiveObject())}>
                 Test
               </button> */}
@@ -197,8 +204,29 @@ var RectWithText = fabric.util.createClass(fabric.Rect, {
 }
 
 
-
-
 );
+
+var ImageWithText = fabric.util.createClass(fabric.Image, {
+  // コンストラクタでtextsプロパティを追加する
+  initialize: function (options) {
+    this.callSuper("initialize", options);
+    this.set("texts", { descriptionColor: "", descriptionPosition: "" });
+  },
+
+  // toObjectメソッドでtextプロパティをJSONに追加する
+  toObject: function () {
+    return fabric.util.object.extend(this.callSuper("toObject"), {
+      texts: this.get("texts"),
+    });
+  },
+
+  // setTextメソッドでtextsプロパティを更新する
+  setText: function (key, text) {
+    var texts = this.get("texts");
+    texts[key] = text;
+    this.set("texts", texts);
+  },
+});
+
 
 export default App;
