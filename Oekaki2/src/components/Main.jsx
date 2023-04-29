@@ -61,10 +61,10 @@ const App = () => {
         });
       }
       if (clickedObject instanceof fabric.Image) {
-        console.log("Clicked rect name is", clickedObject.name);
+        console.log("Clicked image name is", clickedObject.name);
       }
       if (clickedObject instanceof fabric.Textbox) {
-        console.log("Clicked rect name is", clickedObject.name);
+        console.log("Clicked  name is", clickedObject.name);
       }
     });
 
@@ -90,15 +90,15 @@ const App = () => {
 
   const addPic = (canvi) => {
     fabric.Image.fromURL(pic, function (img) {
-      const imgWithText = new ImageWithText(img.toObject());
+      const imgWithText = new ImageWithText(img);
       imgWithText.set({ name: "pic-" + Date.now() });
-      // const imgWithText = new ImageWithText(img.clone());
       canvi.add(imgWithText);
       // canvi.add(img);
-      console.log("img name is", imgWithText.name);
+      console.log("img name is", imgWithText.name,img);
 
     });
   };
+
 
   const handleChange = (e) => {
     //テキストエリア内が変化した時に発火する関数
