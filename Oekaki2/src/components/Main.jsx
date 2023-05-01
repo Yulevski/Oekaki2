@@ -47,7 +47,7 @@ const App = () => {
 
     canvas1.on("mouse:down", (options) => {
       const clickedObject = options.target;
-      if (clickedObject instanceof fabric.Image) {
+      if (clickedObject instanceof fabric.Object) {
         //RectWithTextがクリックされたら、
         console.log(
           "Clicked Image name is",
@@ -114,8 +114,8 @@ const App = () => {
       
           <div className="buttons">
               {/* <h1>buttons</h1> */}
-              <button onMouseDown={() => addRect(canvas1)}><img src="./red_rectangle.png" style={{width:"100px"}}/></button>
-              <button onMouseDown={() => addPic(canvas1)}><img src="./tree_green.png" style={{width:"100px"}}/></button>
+              <button onMouseDown={() => addRect(canvas1)}><img src="./red_rectangle.png" style={{width:"50px"}}/></button>
+              <button onMouseDown={() => addPic(canvas1)}><img src="./tree_green.png" style={{width:"50px"}}/></button>
               {/* <button onClick={() => console.log(canvas1.getActiveObject())}>
                 Test
               </button> */}
@@ -206,7 +206,7 @@ var RectWithText = fabric.util.createClass(fabric.Rect, {
 
 );
 
-var ImageWithText = fabric.util.createClass(fabric.Image, {
+var ImageWithText = fabric.util.createClass(fabric.Object, {
   // コンストラクタでtextsプロパティを追加する
   initialize: function (options) {
     this.callSuper("initialize", options);
