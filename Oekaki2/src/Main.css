@@ -1,0 +1,28 @@
+/* .app-main{
+    width: 70%;
+    height: 100vh;
+} */
+
+.buttons{
+    /* flex-basis: 15%; */
+    width:19%;
+    height: 100vh;
+    /* padding: 10px; */
+    /* margin: 10px; */
+    background-color: #dddddd;
+}
+
+
+.textBox {
+    /* flex-basis: 15%; */
+    width:19%;
+    background-color: #dddddd;
+    /* padding: 10px; */
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    /* margin: 10px; */
+  }
+
+  .canvas1{
+    background-color: rgb(192, 192, 255);
+  }

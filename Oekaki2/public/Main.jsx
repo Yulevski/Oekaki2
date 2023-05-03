@@ -111,18 +111,6 @@ const App = () => {
     });
   };
 
-  function Delete() {
-    var active = canvas1.getActiveObject()
-    if (active) {
-      canvas1.remove(active)
-      console.log("remove")
-      if (active.type == "activeSelection") {
-        active.getObjects().forEach(x => canvas1.remove(x))
-        canvas1.discardActiveObject().renderAll()
-        console.log("remove2")
-      }
-    }
-  }
 
   const handleChange = (e) => {
     //テキストエリア内が変化した時に発火する関数
@@ -138,7 +126,6 @@ const App = () => {
       
           <div className="buttons">
               {/* <h1>buttons</h1> */}
-              <button onMouseDown={Delete()}>delete</button>              
               <button onMouseDown={() => addRect(canvas1)}><img src="./red_rectangle.png" style={{width:"50px"}}/></button>
               <button onMouseDown={() => addPic(canvas1)}><img src="./tree_green.png" style={{width:"50px"}}/></button>
               <button onMouseDown={() => addPic1(canvas1)}><img src="./ike.png" style={{width:"50px"}}/></button>
@@ -255,7 +242,6 @@ var ImageWithText = fabric.util.createClass(fabric.Object, {
     this.set("texts", texts);
   },
 });
-
 
 
 export default App;
