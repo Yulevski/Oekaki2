@@ -12,6 +12,10 @@ const App = () => {
     //図形に対する感情を書くテキストエリアの集合を連想配列の状態として管理するために設定
     descriptionColor: "",
     descriptionPosition: "",
+    descriptionMetaphor:"",
+    descriptionMove:"",
+    descriptionContrast:"",
+
   });
   const [clickedObject, setClickedObject] = useState(null); //アクティブなオブジェクトを状態として管理するために設定
   
@@ -28,14 +32,15 @@ const App = () => {
       if (clickedObject instanceof fabric.Rect) {
         //RectWithTextがクリックされたら、
         console.log(
-          "Clicked rect name is",
-          clickedObject.texts.descriptionColor
-        );
+          "options is ",options);
         setClickedObject(clickedObject); //クリックされたオブジェクトを状態に設定
         setTexts({
           //クリックされたオブジェクトのテキストを、テキストエリアに描画するために設定
           descriptionColor: clickedObject.texts.descriptionColor,
           descriptionPosition: clickedObject.texts.descriptionPosition,
+          descriptionMetaphor: clickedObject.texts.descriptionMetaphor,
+          descriptionMove: clickedObject.texts.descriptionMove,
+          descriptionContrast: clickedObject.texts.descriptionContrast,
         });
       }
       if (clickedObject instanceof fabric.Image) {
@@ -59,6 +64,9 @@ const App = () => {
           //クリックされたオブジェクトのテキストを、テキストエリアに描画するために設定
           descriptionColor: clickedObject.texts.descriptionColor,
           descriptionPosition: clickedObject.texts.descriptionPosition,
+          descriptionMetaphor: clickedObject.texts.descriptionMetaphor,
+          descriptionMove: clickedObject.texts.descriptionMove,
+          descriptionContrast: clickedObject.texts.descriptionContrast,
         });
       }
       if (clickedObject instanceof fabric.Image) {
@@ -115,6 +123,17 @@ const App = () => {
     const active = canvi.getActiveObject();
     if (active) {
       canvi.remove(active);
+      // Initialize descriptionColor property
+      active.setText("descriptionColor", "");
+      // update
+      setTexts((prevState) => ({
+        ...prevState,
+        descriptionColor: "",
+        descriptionPosition: "",
+        descriptionMetaphor:"",
+        descriptionMove:"",
+        descriptionContrast:"",
+      }));
       console.log("remove");
       if (active.type === "activeSelection") {
         active.getObjects().forEach((x) => canvi.remove(x));
@@ -122,15 +141,18 @@ const App = () => {
         console.log("remove2");
       }
     }
+  
   };
   
   const handleChange = (e) => {
+    console.log("e is",e);
     //テキストエリア内が変化した時に発火する関数
-    const { name, value } = e.target; //文法がわからなければdestructuringで調べる。テキストエリアのhtml要素のnameとvalueをそれぞれ同名の変数に格納
+    const { name, value } = e.target;//この中に最新のdiscription color, valueのデータあり
+    console.log("name, value are", name,value); //文法がわからなければdestructuringで調べる。テキストエリアのhtml要素のnameとvalueをそれぞれ同名の変数に格納
     setTexts({ ...{ name: value } }); //変化したテキストエリアの状態を更新
     // setTexts(prevState => ({ ...prevState, [name]: value }));
-    // clickedObject.setText(name, e.target.value); //クリックされた（アクティブな）RectWithTextのテキストプロパティを更新
-    clickedObject.setText("descriptionColor", e.target.value);
+    clickedObject.setText(name, e.target.value); //クリックされた（アクティブな）RectWithTextのテキストプロパティを更新
+    // console.log("clickedobject",clickedObject);
   };
 
   return (
@@ -179,8 +201,8 @@ const App = () => {
           <div>
             <h3>比喩の説明</h3>
             <textarea
-              name="descriptionPosition"
-              value={texts.descriptionPosition}
+              name="descriptionMetaphor"
+              value={texts.descriptionMetaphor}
               placeholder="感情を何かで比喩できる？"
               onChange={handleChange}
             />
@@ -188,8 +210,8 @@ const App = () => {
           <div>
             <h3>移動の説明</h3>
             <textarea
-              name="descriptionPosition"
-              value={texts.descriptionPosition}
+              name="descriptionMove"
+              value={texts.descriptionMove}
               placeholder="移動する何かに意味が込められている？"
               onChange={handleChange}
             />
@@ -197,8 +219,8 @@ const App = () => {
           <div>
             <h3>対比するもの</h3>
             <textarea
-              name="descriptionPosition"
-              value={texts.descriptionPosition}
+              name="descriptionContrast"
+              value={texts.descriptionContrast}
               placeholder="何かと対比している？"
               onChange={handleChange}
             />
@@ -213,7 +235,8 @@ var RectWithText = fabric.util.createClass(fabric.Rect, {
   // コンストラクタでtextsプロパティを追加する
   initialize: function (options) {
     this.callSuper("initialize", options);
-    this.set("texts", { descriptionColor: "", descriptionPosition: "" });
+    this.set("texts", { descriptionColor: "", descriptionPosition: "" 
+    , descriptionMetaphor: "", descriptionMove: "", descriptionContrast: "",});
   },
 
   // toObjectメソッドでtextプロパティをJSONに追加する
@@ -230,15 +253,14 @@ var RectWithText = fabric.util.createClass(fabric.Rect, {
     this.set("texts", texts);
   },
 }
-
-
 );
 
 var ImageWithText = fabric.util.createClass(fabric.Object, {
   // コンストラクタでtextsプロパティを追加する
   initialize: function (options) {
     this.callSuper("initialize", options);
-    this.set("texts", { descriptionColor: "", descriptionPosition: "" });
+    this.set("texts", { descriptionColor: "", descriptionPosition: "" 
+    , descriptionMetaphor: "", descriptionMove: "", descriptionContrast: ""});
   },
 
   // toObjectメソッドでtextプロパティをJSONに追加する
@@ -250,8 +272,8 @@ var ImageWithText = fabric.util.createClass(fabric.Object, {
 
   // setTextメソッドでtextsプロパティを更新する
   setText: function (key, text) {
-    var texts = this.get("texts");
-    texts[key] = text;
+    var texts = this.get("texts");//this=Rectwithtext など
+    texts[key] = text;//該当するkey（name）の最新のテキストを割り当てる
     this.set("texts", texts);
   },
 });
