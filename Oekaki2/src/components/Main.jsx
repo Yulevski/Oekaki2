@@ -124,7 +124,7 @@ const App = () => {
     if (active) {
       canvi.remove(active);
       // Initialize descriptionColor property
-      active.setText("descriptionColor", "");
+      // active.setText("descriptionColor", "");
       // update
       setTexts((prevState) => ({
         ...prevState,
@@ -160,12 +160,10 @@ const App = () => {
       
           <div className="buttons">
               {/* <h1>buttons</h1> */}
-              <button onMouseDown={()=>Delete(canvas1)}>delete</button>              
+              <button onMouseDown={() => Delete(canvas1)}>delete</button>              
               <button onMouseDown={() => addRect(canvas1)}><img src="./red_rectangle.png" style={{width:"50px"}}/></button>
               <button onMouseDown={() => addPic(canvas1)}><img src="./tree_green.png" style={{width:"50px"}}/></button>
               <button onMouseDown={() => addPic1(canvas1)}><img src="./ike.png" style={{width:"50px"}}/></button>
-            
-
               {/* <button onClick={() => console.log(canvas1.getActiveObject())}>
                 Test
               </button> */}
@@ -277,7 +275,5 @@ var ImageWithText = fabric.util.createClass(fabric.Object, {
     this.set("texts", texts);
   },
 });
-
-
 
 export default App;
