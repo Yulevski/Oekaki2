@@ -3,7 +3,7 @@ import './App.css';
 import Main from './components/Main';
 import Sidebar from './components/Sidebar';
 import uuid from "react-uuid";
-import pic from "./components/tree_green.png"; 
+// import pic from "./components/tree_green.png"; 
 
 function App() {
   //ノートを追加する為配列として保持
