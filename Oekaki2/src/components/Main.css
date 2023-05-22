@@ -38,3 +38,22 @@
   .imageexample{
     width:40%
   }
+
+  .color.orientation.metapher.move.contrast{
+    display: block;
+    /* width: 100%; */
+    height: 100%;
+    padding: 4px 16px;
+    border-radius: 4px;
+    border: none;
+    box-shadow: 0 0 0 1px #ccc inset;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    resize: vertical;
+  }
+
+  .color.orientation.metapher.move.contrast:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px rgb(33, 150, 243) inset;
+}

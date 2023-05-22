@@ -180,7 +180,7 @@ const App = () => {
     // console.log("clickedobject",clickedObject);
   };
 
-  const handleChangetheme = (e) => {
+  const handleChangeconcept = (e) => {
     console.log("e is",e);
     //テキストエリア内が変化した時に発火する関数
     const { name, value } = e.target;//この中に最新のdiscription color, valueのデータあり
@@ -228,12 +228,13 @@ const App = () => {
                 ) : null}
               </div>   
               
+            <div className='Concept'>
               <div className='theme'>
                 <textarea
                name="descriptionTheme"
                value={theme.descriptionTheme}
                placeholder="テーマ？"
-               onChange={handleChangetheme}/>
+               onChange={handleChangeconcept}/>
               </div>
                
               <div className='onomatope'>
@@ -241,24 +242,24 @@ const App = () => {
                name="descriptionOnomatope"
                value={theme.descriptionOnomatope}
                placeholder="オノマトペ？"
-               onChange={handleChangetheme}/>
+               onChange={handleChangeconcept}/>
               </div>
-              
-              {/* </div> */}
-         </div>
+            </div>{/*Concept*/}
+           
+         </div>{/*example*/}
 
         {/* <h1>Textbox Contents</h1> */}
-        <div hidden={clickedObject === null ? true : false}>
+        <div className='textbox contents' hidden={clickedObject === null ? true : false}>
           <div>
             <h3>色・グラデーションの説明</h3>
-            <textarea
+            <textarea className='color'
               name="descriptionColor"
               value={texts.descriptionColor}
               placeholder="感情との関係はなんだろう。理由は？"
               onChange={handleChange}
             />
           </div>
-          <div>
+          <div className='orientation'>
             <h3>配置・向きの説明</h3>
             <textarea
               name="descriptionPosition"
@@ -267,7 +268,7 @@ const App = () => {
               onChange={handleChange}
             />
           </div>
-          <div>
+          <div className='metapher'>
             <h3>比喩の説明</h3>
             <textarea
               name="descriptionMetaphor"
@@ -275,7 +276,7 @@ const App = () => {
               placeholder="感情を何かで比喩できる？"
               onChange={handleChange}/>
           </div>
-          <div>
+          <div className='move'>
             <h3>移動の説明</h3>
             <textarea
               name="descriptionMove"
@@ -284,7 +285,7 @@ const App = () => {
               onChange={handleChange}
             />
           </div>
-          <div>
+          <div className='contrast'>
             <h3>対比するもの</h3>
             <textarea
               name="descriptionContrast"
