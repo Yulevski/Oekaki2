@@ -229,16 +229,18 @@ const App = () => {
               </div>   
               
             <div className='Concept'>
-              <div className='theme'>
+              <div>
                 <textarea
+                className='conceptstyle'
                name="descriptionTheme"
                value={theme.descriptionTheme}
                placeholder="テーマ？"
                onChange={handleChangeconcept}/>
               </div>
                
-              <div className='onomatope'>
+              <div>
               <textarea
+               className='conceptstyle'
                name="descriptionOnomatope"
                value={theme.descriptionOnomatope}
                placeholder="オノマトペ？"
@@ -252,7 +254,8 @@ const App = () => {
         <div className='textbox contents' hidden={clickedObject === null ? true : false}>
           <div>
             <h3>色・グラデーションの説明</h3>
-            <textarea className='color'
+            <textarea 
+              className='text-box-contents-syle'
               name="descriptionColor"
               value={texts.descriptionColor}
               placeholder="感情との関係はなんだろう。理由は？"
@@ -262,6 +265,7 @@ const App = () => {
           <div className='orientation'>
             <h3>配置・向きの説明</h3>
             <textarea
+              className='text-box-contents-syle'
               name="descriptionPosition"
               value={texts.descriptionPosition}
               placeholder="感情との関係はなんだろう。理由は？"
@@ -271,6 +275,7 @@ const App = () => {
           <div className='metapher'>
             <h3>比喩の説明</h3>
             <textarea
+              className='text-box-contents-syle'
               name="descriptionMetaphor"
               value={texts.descriptionMetaphor}
               placeholder="感情を何かで比喩できる？"
@@ -279,6 +284,7 @@ const App = () => {
           <div className='move'>
             <h3>移動の説明</h3>
             <textarea
+              className='text-box-contents-syle'
               name="descriptionMove"
               value={texts.descriptionMove}
               placeholder="移動する何かに意味が込められている？"
@@ -288,6 +294,7 @@ const App = () => {
           <div className='contrast'>
             <h3>対比するもの</h3>
             <textarea
+              className='text-box-contents-syle'
               name="descriptionContrast"
               value={texts.descriptionContrast}
               placeholder="何かと対比している？"
