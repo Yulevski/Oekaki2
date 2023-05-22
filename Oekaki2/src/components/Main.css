@@ -26,3 +26,15 @@
   .canvas1{
     background-color: rgb(192, 192, 255);
   }
+
+  .example{
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+  }
+  .textexample{
+  width: 40%;
+  }
+  .imageexample{
+    width:40%
+  }

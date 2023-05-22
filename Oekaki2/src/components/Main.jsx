@@ -21,6 +21,9 @@ const App = () => {
   const [rectCount, setRectCount] = useState(0);
   const [imageCount, setimageCount] = useState(0);
   const [imageCount1, setimageCount1] = useState(0);
+  //テーマとオノマトぺ
+  const [theme, settheme] = useState({descriptionTheme:"",descriptionOnomatope:"",});
+  const [onomatope, setonomatope] = useState({descriptionOnomatope:"",});
 
 
   const [clickedObject, setClickedObject] = useState(null); //アクティブなオブジェクトを状態として管理するために設定
@@ -37,8 +40,8 @@ const App = () => {
       const clickedObject = options.target;
       if (clickedObject instanceof fabric.Rect) {
         //RectWithTextがクリックされたら、
-        console.log(
-          "options is ",options);
+        console.log("options is ",options);
+
         setClickedObject(clickedObject); //クリックされたオブジェクトを状態に設定
         setTexts({
           //クリックされたオブジェクトのテキストを、テキストエリアに描画するために設定
@@ -177,6 +180,16 @@ const App = () => {
     // console.log("clickedobject",clickedObject);
   };
 
+  const handleChangetheme = (e) => {
+    console.log("e is",e);
+    //テキストエリア内が変化した時に発火する関数
+    const { name, value } = e.target;//この中に最新のdiscription color, valueのデータあり
+    console.log("name, value are", name,value); 
+    settheme({ ...{ name: value } }); //変化したテキストエリアの状態を更新
+  };
+
+
+
   return (
     <div style={{ display: "flex", flexWrap: "wrap",flexGrow: 1 }}>
       
@@ -199,11 +212,10 @@ const App = () => {
 
       <div className="textBox">
         <div className="example"> 
-
-        <div className='textexample'>
-          <span>{clickedObject &&clickedObject.name2}</span>
-          <span>{clickedObject &&clickedObject.prevCount}</span>
-        </div>
+          <div className='textexample'>
+            <span className='name2'>{clickedObject &&clickedObject.name2}</span>
+            <span className='prevCount'>{clickedObject &&clickedObject.prevCount}</span>
+          </div>
               <div className='imageexample'>
                   {clickedObject && clickedObject.name.includes("rect-") ? (
                   <img src="./red_rectangle.png" style={{ width: "50px" }} />
@@ -215,6 +227,24 @@ const App = () => {
                   <img src="./ike.png" style={{ width: "50px" }} />
                 ) : null}
               </div>   
+              
+              <div className='theme'>
+                <textarea
+               name="descriptionTheme"
+               value={theme.descriptionTheme}
+               placeholder="テーマ？"
+               onChange={handleChangetheme}/>
+              </div>
+               
+              <div className='onomatope'>
+              <textarea
+               name="descriptionOnomatope"
+               value={theme.descriptionOnomatope}
+               placeholder="オノマトペ？"
+               onChange={handleChangetheme}/>
+              </div>
+              
+              {/* </div> */}
          </div>
 
         {/* <h1>Textbox Contents</h1> */}
@@ -243,8 +273,7 @@ const App = () => {
               name="descriptionMetaphor"
               value={texts.descriptionMetaphor}
               placeholder="感情を何かで比喩できる？"
-              onChange={handleChange}
-            />
+              onChange={handleChange}/>
           </div>
           <div>
             <h3>移動の説明</h3>
@@ -291,6 +320,7 @@ var RectWithText = fabric.util.createClass(fabric.Rect, {
     texts[key] = text;
     this.set("texts", texts);
   },
+
 }
 );
 
@@ -315,6 +345,8 @@ var ImageWithText = fabric.util.createClass(fabric.Object, {
     texts[key] = text;//該当するkey（name）の最新のテキストを割り当てる
     this.set("texts", texts);
   },
+
+
 });
 
 export default App;
