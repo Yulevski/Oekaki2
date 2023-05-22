@@ -17,7 +17,11 @@ const App = () => {
     descriptionContrast:"",
 
   });
+  //図形カウント用
   const [rectCount, setRectCount] = useState(0);
+  const [imageCount, setimageCount] = useState(0);
+  const [imageCount1, setimageCount1] = useState(0);
+
 
   const [clickedObject, setClickedObject] = useState(null); //アクティブなオブジェクトを状態として管理するために設定
   
@@ -89,25 +93,33 @@ const App = () => {
 
   const addRect = (canvi) => {
     setRectCount((prevCount) =>{
-    console.log("prevCount is", prevCount);
+    // console.log("prevCount is", prevCount);
     return prevCount + 1;});
-
     const rect = new RectWithText({
       height: 280,
       width: 200,
       fill: "red",
       name: "rect-" + Date.now(),
+      name2:"四角",
+      prevCount: rectCount + 1,
     });
 
     console.log("name is", rect.name);
+    console.log("prevCount is", rect.prevCount);
     canvi.add(rect);
     //canvi.renderAll();
   };
 
   const addPic = (canvi) => {
+    setimageCount((prevCount) =>{
+      // console.log("prevCount is", prevCount);
+      return prevCount + 1;});
     fabric.Image.fromURL(pic, function (img) {
       const imgWithText = new ImageWithText(img);
-      imgWithText.set({ name: "tree-" + Date.now() });
+      imgWithText.set({ name: "tree-" + Date.now(),
+      name2:"木",
+      prevCount: imageCount + 1,
+    });
       canvi.add(imgWithText);
       // canvi.add(img);
       console.log("img name is", imgWithText.name); 
@@ -115,9 +127,14 @@ const App = () => {
   };
 
   const addPic1 = (canvi) => {
+    setimageCount1((prevCount) =>{
+      // console.log("prevCount is", prevCount);
+      return prevCount + 1;});
     fabric.Image.fromURL(pic1, function (img) {
       const imgWithText = new ImageWithText(img);
-      imgWithText.set({ name: "ike-" + Date.now() });
+      imgWithText.set({ name: "ike-" + Date.now(),
+      name2:"池",
+      prevCount: imageCount1 + 1, });
       canvi.add(imgWithText);
       // canvi.add(img);
       console.log("img name is", imgWithText.name); 
@@ -182,16 +199,24 @@ const App = () => {
 
       <div className="textBox">
         <div className="example"> 
-        {clickedObject && clickedObject.name.includes("rect-") ? (
-          <img src="./red_rectangle.png" style={{ width: "50px" }} />
-        ) : null}
-        {clickedObject && clickedObject.name.includes("tree-") ? (
-          <img src="./tree_green.png" style={{ width: "50px" }} />
-        ) : null}
-        {clickedObject && clickedObject.name.includes("ike-") ? (
-          <img src="./ike.png" style={{ width: "50px" }} />
-        ) : null}
+
+        <div className='textexample'>
+          <span>{clickedObject &&clickedObject.name2}</span>
+          <span>{clickedObject &&clickedObject.prevCount}</span>
         </div>
+              <div className='imageexample'>
+                  {clickedObject && clickedObject.name.includes("rect-") ? (
+                  <img src="./red_rectangle.png" style={{ width: "50px" }} />
+                ) : null}
+                {clickedObject && clickedObject.name.includes("tree-") ? (
+                  <img src="./tree_green.png" style={{ width: "50px" }} />
+                ) : null}
+                {clickedObject && clickedObject.name.includes("ike-") ? (
+                  <img src="./ike.png" style={{ width: "50px" }} />
+                ) : null}
+              </div>   
+         </div>
+
         {/* <h1>Textbox Contents</h1> */}
         <div hidden={clickedObject === null ? true : false}>
           <div>
