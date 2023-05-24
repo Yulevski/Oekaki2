@@ -5,18 +5,17 @@
 
 .buttons{
     /* flex-basis: 15%; */
-    width:19%;
+    width:6%;
     height: 100vh;
     /* padding: 10px; */
     /* margin: 10px; */
     background-color: #dddddd;
 }
 
-
 .textBox {
     /* flex-basis: 15%; */
-    width:19%;
-    background-color: #dddddd;
+    width:20%;
+    background-color: #f2f2f2;
     /* padding: 10px; */
     border: 1px solid #ccc;
     border-radius: 0px;
@@ -24,23 +23,76 @@
   }
 
   .canvas1{
+    /* width:75%; */
     background-color: rgb(192, 192, 255);
-  }
+  } 
+  /* .canvas-container{
+    width:100%;
+    background-color: rgb(192, 192, 255);
+  } 
 
+  .lower-canvas
+  {width:100%;
+    background-color: rgb(255, 255, 255);
+  }
+  
+  .upper-canvas
+  {width:100%;
+    background-color: rgb(255, 255, 255);
+  } */
+
+
+  .example-and-conept{
+    display: flex;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  }
   .example{
     display: flex;
     align-items: flex-start;
     flex-wrap: nowrap;
   }
   .textexample{
-  width: 40%;
-  }
-  .imageexample{
-    width:40%
+  width: 30%;
   }
 
-  /* .color.orientation.metapher.move.contrast */
+  .example-left {
+    position: relative;
+    width: 50%
+  }
   
+
+
+.image-and-example{
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+}
+  .imageexample{
+    /* position: relative; */
+    z-index: 1; /* Move the content above the background image */
+  }
+  .textexample{
+    /* position: relative; */
+    display: flex;
+    z-index: 1;
+  }
+  .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* width: 100px; Width of the background image */
+    
+    /* z-index: -1; Move the background image behind other elements */
+  }
+  
+.concept{
+  display: flex;
+  flex-direction: column;
+  margin-right: 0;
+  margin-left: auto;
+}
+
   .conceptstyle{
     display: block;
     height: 100%;

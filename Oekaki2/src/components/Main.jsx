@@ -15,15 +15,15 @@ const App = () => {
     descriptionMetaphor:"",
     descriptionMove:"",
     descriptionContrast:"",
-
   });
+  
   //図形カウント用
   const [rectCount, setRectCount] = useState(0);
   const [imageCount, setimageCount] = useState(0);
   const [imageCount1, setimageCount1] = useState(0);
   //テーマとオノマトぺ
   const [theme, settheme] = useState({descriptionTheme:"",descriptionOnomatope:"",});
-  const [onomatope, setonomatope] = useState({descriptionOnomatope:"",});
+  // const [onomatope, setonomatope] = useState({descriptionOnomatope:"",});
 
 
   const [clickedObject, setClickedObject] = useState(null); //アクティブなオブジェクトを状態として管理するために設定
@@ -31,8 +31,8 @@ const App = () => {
   useEffect(() => {
    
     const canvas1 = new fabric.Canvas("canvas1", {
-      height: window.innerHeight,
-      width: 0.6*window.innerWidth,
+      height: 1.0*window.innerHeight,
+       width: 0.72*window.innerWidth,
       backgroundColor: "pink",
     }); 
     
@@ -183,7 +183,7 @@ const App = () => {
   const handleChangeconcept = (e) => {
     console.log("e is",e);
     //テキストエリア内が変化した時に発火する関数
-    const { name, value } = e.target;//この中に最新のdiscription color, valueのデータあり
+    const { name, value } = e.target;//この中に最新のdiscription theme, onomatopeのデータあり
     console.log("name, value are", name,value); 
     settheme({ ...{ name: value } }); //変化したテキストエリアの状態を更新
   };
@@ -211,24 +211,34 @@ const App = () => {
         
 
       <div className="textBox">
+      <div className='example-and-conept'>
         <div className="example"> 
-          <div className='textexample'>
-            <span className='name2'>{clickedObject &&clickedObject.name2}</span>
-            <span className='prevCount'>{clickedObject &&clickedObject.prevCount}</span>
-          </div>
+          <div className="example-left">
+            <div className="background-image">
+              <img src="./small_rectangle.png" style={{width:"100px"}}/>
+            </div>
+            <div className='image-and-example'>
               <div className='imageexample'>
-                  {clickedObject && clickedObject.name.includes("rect-") ? (
-                  <img src="./red_rectangle.png" style={{ width: "50px" }} />
-                ) : null}
-                {clickedObject && clickedObject.name.includes("tree-") ? (
-                  <img src="./tree_green.png" style={{ width: "50px" }} />
-                ) : null}
-                {clickedObject && clickedObject.name.includes("ike-") ? (
-                  <img src="./ike.png" style={{ width: "50px" }} />
-                ) : null}
+                    {clickedObject && clickedObject.name.includes("rect-") ? (
+                    <img src="./red_rectangle.png" style={{ width: "50px" }} />
+                  ) : null}
+                  {clickedObject && clickedObject.name.includes("tree-") ? (
+                    <img src="./tree_green.png" style={{ width: "50px" }} />
+                  ) : null}
+                  {clickedObject && clickedObject.name.includes("ike-") ? (
+                    <img src="./ike.png" style={{ width: "50px" }} />
+                  ) : null}
               </div>   
+              <div className='textexample'>
+                  <span className='name2'>{clickedObject &&clickedObject.name2}</span>
+                  <span className='prevCount'>{clickedObject &&clickedObject.prevCount}</span>
+              </div> 
+            </div>{/* {image-and-example} */}
+                 
+            </div>{/* {example-left} */}
+          </div>{/*example*/}
               
-            <div className='Concept'>
+            <div className='concept'>
               <div>
                 <textarea
                 className='conceptstyle'
@@ -246,10 +256,9 @@ const App = () => {
                placeholder="オノマトペ？"
                onChange={handleChangeconcept}/>
               </div>
-            </div>{/*Concept*/}
-           
-         </div>{/*example*/}
-
+            </div>{/*concept*/}
+        </div>  {/*example-and-concept*/}   
+      
         {/* <h1>Textbox Contents</h1> */}
         <div className='textbox contents' hidden={clickedObject === null ? true : false}>
           <div>
