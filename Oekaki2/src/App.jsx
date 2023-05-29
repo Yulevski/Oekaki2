@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import Main from './components/Main';
+import Themepage from './components/Themepage';
+import Onomatopepage from './components/Onomatopepage';
 import { BrowserRouter, Route,Switch ,Link,NavLink} from 'react-router-dom';
 
 function Page() {
   
   return (
     <BrowserRouter>
-    <h1>Hello React Router</h1>
+    {/* <h1>Hello React Router</h1>
     <ul>
         <li>
           <NavLink activeStyle={{
@@ -22,17 +24,17 @@ function Page() {
           </NavLink>
         </li>
         <li>
-          <NavLink activeClassName="active" to="/app">
-          <Link to="/app">App</Link>
+          <NavLink activeClassName="active" to="/main">
+          <Link to="/main">Main</Link>
           </NavLink>
         </li>
-    </ul>
+    </ul> */}
     <Switch>
-      <Route exact path="/" component={Theme}>
+      <Route exact path="/" component={Themepagefunction}>
       </Route>
-      <Route path="/onomatope" component={Onomatope}>
+      <Route path="/onomatope" component={Onomatopefunction}>
       </Route>
-      <Route path="/app" component={App}>
+      <Route path="/main" component={Mainfunction}>
       </Route>
     </Switch>
   </BrowserRouter>
@@ -40,18 +42,41 @@ function Page() {
 }
 
 
-function Theme() {
-  return <h2>Theme</h2>;
+// function Themepagefunction() {
+//   return( 
+//         <><li>
+//       <NavLink activeClassName="active" to="/onomatope">
+//         <Link to="/onomatope">Next</Link>
+//       </NavLink>
+//     </li>
+//     <h2>Here is Theme</h2></>)
+// }
+
+function Themepagefunction() {
+  return (
+    
+    <div className="Themepage">
+      <Themepage />
+    </div>
+    
+  )
 }
 
-function Onomatope() {
-  return <h2>Onomatope</h2>;
+function Onomatopefunction() {
+  return(
+    ( 
+      <div className="Onomatope">
+        <Onomatopepage />
+      </div>
+      )
+  )
+
 }
 
-function App() {
+function Mainfunction() {
   
   return (
-    <div className="App">
+    <div className="Main">
         <Main/>
     </div>
   )
