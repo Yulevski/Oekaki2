@@ -21,12 +21,13 @@ function Themepage({themeValue,setThemeValue }) {
     <h2>Here is Theme in themepage</h2>
     {/* <textarea value={themeValue} onChange={handleChange} /> */}
     {/* Six buttons with assigned values */}
-    <button onClick={() => setThemeValue('Value 1')}>Button 1</button>
-    <button onClick={() => setThemeValue('Value 2')}>Button 2</button>
-    <button onClick={() => setThemeValue('Value 3')}>Button 3</button>
-    <button onClick={() => setThemeValue('Value 4')}>Button 4</button>
-    <button onClick={() => setThemeValue('Value 5')}>Button 5</button>
-    <button onClick={() => setThemeValue('Value 6')}>Button 6</button>
+    <button onClick={() => setThemeValue('TVの星占いが最下位であった')}>TVの星占いが最下位であった</button>
+    <button onClick={() => setThemeValue('真夏の外出')}>真夏の外出</button>
+    <button onClick={() => setThemeValue('昼食後に眠い')}>昼食後に眠い</button>
+    <button onClick={() => setThemeValue('春の予感')}>春の予感</button>
+    <button onClick={() => setThemeValue('朝もう少し寝たい時')}>朝もう少し寝たい時</button>
+    <button onClick={() => setThemeValue('冬の予感')}>冬の予感</button>
+
     </div>
     
     
