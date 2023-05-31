@@ -2,26 +2,28 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
 
-function Theme() {
-  const [text, setText] = useState('');
+function Themepage({themeValue,setThemeValue }) {
+  // const [text, setText] = useState('');
 
   const handleChange = (event) => {
-    setText(event.target.value);
+    setThemeValue(event.target.value);
   };
 
 
   return( 
     
-    <><li>
+    <div className="Themepage">
+    <li>
       <NavLink activeClassName="active" to="/onomatope">
         <Link to="/onomatope">Next</Link>
       </NavLink>
     </li>
     <h2>Here is Theme in themepage</h2>
-    <textarea value={text} onChange={handleChange} />
-    </>
+    <textarea value={themeValue} onChange={handleChange} />
+    
+    </div>
     
   )
 }
 
-export default Theme;
+export default Themepage;

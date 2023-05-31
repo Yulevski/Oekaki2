@@ -4,8 +4,10 @@ import { fabric } from "fabric";
 import pic from "./tree_green.png";
 import pic1 from "./ike.png";
 import './Main.css';
+import { NavLink, Link } from 'react-router-dom';
 
-const App = () => {
+
+const App = ({themeValue, onomatopeValue}) => {
   const [canvas1, setCanvas1] = useState("");
   // const [canvas2, setCanvas2] = useState("");
   const [texts, setTexts] = useState({
@@ -180,13 +182,6 @@ const App = () => {
     // console.log("clickedobject",clickedObject);
   };
 
-  const handleChangeconcept = (e) => {
-    console.log("e is",e);
-    //テキストエリア内が変化した時に発火する関数
-    const { name, value } = e.target;//この中に最新のdiscription theme, onomatopeのデータあり
-    console.log("name, value are", name,value); 
-    settheme({ ...{ name: value } }); //変化したテキストエリアの状態を更新
-  };
 
 
 
@@ -239,23 +234,9 @@ const App = () => {
           </div>{/*example*/}
               
             <div className='concept'>
-              <div>
-                <textarea
-                className='conceptstyle'
-               name="descriptionTheme"
-               value={theme.descriptionTheme}
-               placeholder="テーマ？"
-               onChange={handleChangeconcept}/>
-              </div>
+              <div>{themeValue}     </div>
                
-              <div>
-              <textarea
-               className='conceptstyle'
-               name="descriptionOnomatope"
-               value={theme.descriptionOnomatope}
-               placeholder="オノマトペ？"
-               onChange={handleChangeconcept}/>
-              </div>
+              <div>{onomatopeValue} </div>
             </div>{/*concept*/}
         </div>  {/*example-and-concept*/}   
       

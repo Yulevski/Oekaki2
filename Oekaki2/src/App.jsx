@@ -5,60 +5,26 @@ import Onomatopepage from './components/Onomatopepage';
 import { BrowserRouter, Route,Switch ,Link,NavLink} from 'react-router-dom';
 
 function Page() {
-  
+  const [themeValue, setThemeValue] = useState('');
+  const [onomatopeValue, setOnomatopeValue] = useState('');
+
+
   return (
     <BrowserRouter>
     <Switch>
-      <Route exact path="/" component={Themepagefunction}>
-      </Route>
-      <Route path="/onomatope" component={Onomatopefunction}>
-      </Route>
-      <Route path="/main" component={Mainfunction}>
-      </Route>
+      {/* <Route exact path="/" component={Themepagefunction} >
+       */}
+      <Route exact path="/" render={() => <Themepage themeValue={themeValue} setThemeValue={setThemeValue}/>} />
+      <Route path="/onomatope" render={() => <Onomatopepage themeValue={themeValue} onomatopeValue={onomatopeValue} 
+      setOnomatopeValue={setOnomatopeValue} setThemeValue={setThemeValue}/>} />
+
+      {/* <Route path="/main" component={Mainfunction}>
+      </Route> */}
+      <Route path="/main" render={() => <Main themeValue={themeValue} onomatopeValue={onomatopeValue} />} />
+
     </Switch>
   </BrowserRouter>
   );
-}
-
-
-// function Themepagefunction() {
-//   return( 
-//         <><li>
-//       <NavLink activeClassName="active" to="/onomatope">
-//         <Link to="/onomatope">Next</Link>
-//       </NavLink>
-//     </li>
-//     <h2>Here is Theme</h2></>)
-// }
-
-function Themepagefunction() {
-  return (
-    
-    <div className="Themepage">
-      <Themepage />
-    </div>
-    
-  )
-}
-
-function Onomatopefunction() {
-  return(
-    ( 
-      <div className="Onomatope">
-        <Onomatopepage />
-      </div>
-      )
-  )
-
-}
-
-function Mainfunction() {
-  
-  return (
-    <div className="Main">
-        <Main/>
-    </div>
-  )
 }
 
 export default Page;
