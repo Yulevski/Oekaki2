@@ -11,7 +11,7 @@ function Themepage({themeValue,setThemeValue }) {
 
 
   return( 
-    
+    <>
     <div className="Themepage">
     <li>
       <NavLink activeClassName="active" to="/onomatope">
@@ -29,7 +29,7 @@ function Themepage({themeValue,setThemeValue }) {
     <button onClick={() => setThemeValue('冬の予感')}>冬の予感</button>
 
     </div>
-    
+</>
     
   )
 }

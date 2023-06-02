@@ -235,7 +235,6 @@ const App = ({themeValue, onomatopeValue}) => {
               
             <div className='concept'>
               <div>{themeValue}     </div>
-               
               <div>{onomatopeValue} </div>
             </div>{/*concept*/}
         </div>  {/*example-and-concept*/}   
