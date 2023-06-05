@@ -1,0 +1,14 @@
+button {
+    /*  default button styles */
+    background-color: #e0e0e0;
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+
+.selected {
+    /* Styles for the active button */
+    background-color: #ff0000;
+    color: #fff;
+  }
