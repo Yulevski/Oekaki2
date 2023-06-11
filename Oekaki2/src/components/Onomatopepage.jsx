@@ -17,7 +17,7 @@ function Onomatope({themeValue,onomatopeValue, setOnomatopeValue}) {
     </li>
       <h2>Here is Onomatope  「{themeValue}」に合うオノマトペを入力！</h2>
       <textarea placeholder="オノマトペ？"value={onomatopeValue} onChange={handleChange} />
-    <button onClick={() => setOnomatopeValue('Value 1')}>Button 1</button>
+    {/* <button onClick={() => setOnomatopeValue('Value 1')}>Button 1</button> */}
     {/* 例に飛ぶリンク↓ */}
     <li>
       <NavLink activeClassName="active" to="/onomatopeexample1">

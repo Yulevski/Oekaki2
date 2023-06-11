@@ -2,30 +2,72 @@
     width: 70%;
     height: 100vh;
 } */
+.Upper{
+  background-color: #a09e9e;
+  height: 20%;
+  width: 100%;
+
+}
+.concept{
+  display: flex;
+  /* flex-direction: row; */
+  justify-content: space-evenly;
+  /* margin-right: 0;
+  margin-left: auto; */
+}
+
+.Lower{
+  display: flex;
+  flex-direction: row;
+
+}
+
+.example{
+  background-color: rgb(192, 192, 255);
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  width: 100px;
+}
+/* .textexample{ width: 40%;  } */
+
 
 .buttons{
     /* flex-basis: 15%; */
-    width:6%;
+    padding-top: 0%;
+    padding-left: 0%;
+    width: 100px;
     height: 100vh;
     /* padding: 10px; */
     /* margin: 10px; */
-    background-color: #dddddd;
+    background-color: #57f452;
 }
+/* .buttons-background{} */
+
+.canvas1{
+  /* width:80%; */
+  /* width:calc(100%-150px); */
+  /* padding-left: 12%; */
+  background-color: rgb(192, 192, 255);
+  
+} 
 
 .textBox {
     /* flex-basis: 15%; */
-    width:20%;
+    /* width:20%; */
+    /* padding-right: 5%; */
+    /* padding-left: 20%; */
     background-color: #f2f2f2;
     /* padding: 10px; */
     border: 1px solid #ccc;
     border-radius: 0px;
+    margin-right: 0;
+
+   
     /* margin: 10px; */
   }
 
-  .canvas1{
-    /* width:75%; */
-    background-color: rgb(192, 192, 255);
-  } 
+  
   /* .canvas-container{
     width:100%;
     background-color: rgb(192, 192, 255);
@@ -40,63 +82,15 @@
   {width:100%;
     background-color: rgb(255, 255, 255);
   } */
-
-
-  .example-and-conept{
-    display: flex;
-  align-items: flex-start;
-  flex-wrap: nowrap;
-  }
-  .example{
-    display: flex;
-    align-items: flex-start;
-    flex-wrap: nowrap;
-  }
-  .textexample{
-  width: 30%;
+  .textbox-contents{
+    width: calc(100%-75%-100px);
+    background-color: #f2f2f2;
   }
 
-  .example-left {
-    position: relative;
-    width: 50%
-  }
-  
-
-
-.image-and-example{
-  display: flex;
-  align-items: flex-start;
-  flex-wrap: nowrap;
-}
-  .imageexample{
-    /* position: relative; */
-    z-index: 1; /* Move the content above the background image */
-  }
-  .textexample{
-    /* position: relative; */
-    display: flex;
-    z-index: 1;
-  }
-  .background-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    /* width: 100px; Width of the background image */
-    
-    /* z-index: -1; Move the background image behind other elements */
-  }
-  
-.concept{
-  display: flex;
-  flex-direction: column;
-  margin-right: 0;
-  margin-left: auto;
-}
-
-  .conceptstyle{
+   .conceptstyle{
     display: block;
     height: 100%;
-    padding: 4px 16px;
+    /* padding: 4px 16px; */
     border-radius: 4px;
     border: none;
     box-shadow: 0 0 0 1px #ccc inset;

@@ -34,7 +34,9 @@ const App = ({themeValue, onomatopeValue}) => {
    
     const canvas1 = new fabric.Canvas("canvas1", {
       height: 1.0*window.innerHeight,
-       width: 0.72*window.innerWidth,
+      //  width: `calc(100% - 200px)`,
+      // width:`600px`,
+      width:0.75*window.innerWidth,
       backgroundColor: "pink",
     }); 
     
@@ -186,35 +188,19 @@ const App = ({themeValue, onomatopeValue}) => {
 
 
   return (
-    <div style={{ display: "flex", flexWrap: "wrap",flexGrow: 1 }}>
-      
-          <div className="buttons">
-              {/* <h1>buttons</h1> */}
-              <button onMouseDown={() => Delete(canvas1)}>delete</button>              
-              <button onMouseDown={() => addRect(canvas1)}><img src="./red_rectangle.png" style={{width:"50px"}}/></button>
-              <button onMouseDown={() => addPic(canvas1)}><img src="./tree_green.png" style={{width:"50px"}}/></button>
-              <button onMouseDown={() => addPic1(canvas1)}><img src="./ike.png" style={{width:"50px"}}/></button>
-              {/* <button onClick={() => console.log(canvas1.getActiveObject())}>
-                Test
-              </button> */}
-          </div>
-      
-          <div className="canvas1">
-            {/* <h1>Canvas1</h1> */}
-            <canvas id="canvas1" />
-          </div>
-        
 
-      <div className="textBox">
-      <div className='example-and-conept'>
-        <div className="example"> 
-          <div className="example-left">
-            <div className="background-image">
-              <img src="./small_rectangle.png" style={{width:"100px"}}/>
-            </div>
-            <div className='image-and-example'>
-              <div className='imageexample'>
-                    {clickedObject && clickedObject.name.includes("rect-") ? (
+    <><div className='Upper'>
+            <div className='concept'>
+              <div>テーマ：{themeValue}     </div>
+              <div>オノマトペ：{onomatopeValue} </div>
+            </div>{/*concept*/}
+    </div>
+    
+    <div className='Lower'>
+        <div className='left'>
+          <div className="example">
+                <div className='imageexample'>
+                  {clickedObject && clickedObject.name.includes("rect-") ? (
                     <img src="./red_rectangle.png" style={{ width: "50px" }} />
                   ) : null}
                   {clickedObject && clickedObject.name.includes("tree-") ? (
@@ -223,76 +209,82 @@ const App = ({themeValue, onomatopeValue}) => {
                   {clickedObject && clickedObject.name.includes("ike-") ? (
                     <img src="./ike.png" style={{ width: "50px" }} />
                   ) : null}
-              </div>   
-              <div className='textexample'>
-                  <span className='name2'>{clickedObject &&clickedObject.name2}</span>
-                  <span className='prevCount'>{clickedObject &&clickedObject.prevCount}</span>
-              </div> 
-            </div>{/* {image-and-example} */}
-                 
-            </div>{/* {example-left} */}
+                </div>
+                <div className='textexample'>
+                  <span className='name2'>{clickedObject && clickedObject.name2}</span>
+                  <span className='prevCount'>{clickedObject && clickedObject.prevCount}</span>
+                </div>
           </div>{/*example*/}
-              
-            <div className='concept'>
-              <div>{themeValue}     </div>
-              <div>{onomatopeValue} </div>
-            </div>{/*concept*/}
-        </div>  {/*example-and-concept*/}   
-      
-        {/* <h1>Textbox Contents</h1> */}
-        <div className='textbox contents' hidden={clickedObject === null ? true : false}>
-          <div>
-            <h3>色・グラデーションの説明</h3>
-            <textarea 
-              className='text-box-contents-syle'
-              name="descriptionColor"
-              value={texts.descriptionColor}
-              placeholder="感情との関係はなんだろう。理由は？"
-              onChange={handleChange}
-            />
-          </div>
-          <div className='orientation'>
-            <h3>配置・向きの説明</h3>
-            <textarea
-              className='text-box-contents-syle'
-              name="descriptionPosition"
-              value={texts.descriptionPosition}
-              placeholder="感情との関係はなんだろう。理由は？"
-              onChange={handleChange}
-            />
-          </div>
-          <div className='metapher'>
-            <h3>比喩の説明</h3>
-            <textarea
-              className='text-box-contents-syle'
-              name="descriptionMetaphor"
-              value={texts.descriptionMetaphor}
-              placeholder="感情を何かで比喩できる？"
-              onChange={handleChange}/>
-          </div>
-          <div className='move'>
-            <h3>移動の説明</h3>
-            <textarea
-              className='text-box-contents-syle'
-              name="descriptionMove"
-              value={texts.descriptionMove}
-              placeholder="移動する何かに意味が込められている？"
-              onChange={handleChange}
-            />
-          </div>
-          <div className='contrast'>
-            <h3>対比するもの</h3>
-            <textarea
-              className='text-box-contents-syle'
-              name="descriptionContrast"
-              value={texts.descriptionContrast}
-              placeholder="何かと対比している？"
-              onChange={handleChange}
-            />
-          </div>
-        </div>
-      </div>
-    </div>
+
+          <div className="buttons">
+            {/* <h1>buttons</h1> */}
+            <div className='buttons-background'>
+            </div>
+            <button onMouseDown={() => Delete(canvas1)}>delete</button>
+            <button onMouseDown={() => addRect(canvas1)}><img src="./red_rectangle.png" style={{ width: "50px" }} /></button>
+            <button onMouseDown={() => addPic(canvas1)}><img src="./tree_green.png" style={{ width: "50px" }} /></button>
+            <button onMouseDown={() => addPic1(canvas1)}><img src="./ike.png" style={{ width: "50px" }} /></button>
+            {/* <button onClick={() => console.log(canvas1.getActiveObject())}>Test</button> */}
+          </div>{/*buttons*/}
+
+      </div>{/*left*/}
+
+          <div className="canvas1">
+            {/* <h1>Canvas1</h1> */}
+            <canvas id="canvas1" />
+          </div>{/*canvas1*/}
+
+        <div className="textBox">        
+          {/* <h1>Textbox Contents</h1> */}
+          <div className='textbox-contents' hidden={clickedObject === null ? true : false}>
+            <div>
+              <h3>色・グラデーションの説明</h3>
+              <textarea
+                className='text-box-contents-syle'
+                name="descriptionColor"
+                value={texts.descriptionColor}
+                placeholder="感情との関係はなんだろう。理由は？"
+                onChange={handleChange} />
+            </div>
+            <div className='orientation'>
+              <h3>配置・向きの説明</h3>
+              <textarea
+                className='text-box-contents-syle'
+                name="descriptionPosition"
+                value={texts.descriptionPosition}
+                placeholder="感情との関係はなんだろう。理由は？"
+                onChange={handleChange} />
+            </div>
+            <div className='metapher'>
+              <h3>比喩の説明</h3>
+              <textarea
+                className='text-box-contents-syle'
+                name="descriptionMetaphor"
+                value={texts.descriptionMetaphor}
+                placeholder="感情を何かで比喩できる？"
+                onChange={handleChange} />
+            </div>
+            <div className='move'>
+              <h3>移動の説明</h3>
+              <textarea
+                className='text-box-contents-syle'
+                name="descriptionMove"
+                value={texts.descriptionMove}
+                placeholder="移動する何かに意味が込められている？"
+                onChange={handleChange} />
+            </div>
+            <div className='contrast'>
+              <h3>対比するもの</h3>
+              <textarea
+                className='text-box-contents-syle'
+                name="descriptionContrast"
+                value={texts.descriptionContrast}
+                placeholder="何かと対比している？"
+                onChange={handleChange} />
+            </div>
+          </div>{/*textbox-contents*/}
+        </div>{/*textBox */}
+      </div>{/*Lower */}</>
   );
 };
 
