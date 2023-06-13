@@ -1,7 +1,7 @@
-button {
+.buttons-theme {
     /*  default button styles */
-    background-color: #e0e0e0;
-    color: #333;
+    /* background-color: #c0c0c0; */
+    color: #9524f8;
     padding: 10px 20px;
     border: none;
     cursor: pointer;

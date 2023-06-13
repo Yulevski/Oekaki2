@@ -21,14 +21,12 @@ function Themepage({themeValue,setThemeValue }) {
     <>
     <div className="Themepage">
     <li>
-      <NavLink activeClassName="active" to="/onomatope">
         <Link to="/onomatope">Next</Link>
-      </NavLink>
     </li>
     <h2>Here is Theme in themepage</h2>
     {/* <textarea value={themeValue} onChange={handleChange} /> */}
     {/* Six buttons with assigned values */}
-
+   <div className="buttons-theme">
     <button onClick={() =>handleButtonClick('TVの星占いが最下位であった')}
         className={selectedButton === 'TVの星占いが最下位であった' ? 'selected' : ''}
     >TVの星占いが最下位であった</button>
@@ -53,7 +51,7 @@ function Themepage({themeValue,setThemeValue }) {
     <button  onClick={() => handleButtonClick('冬の予感')}
           className={selectedButton === '冬の予感' ? 'selected' : ''}
     >冬の予感</button>
-
+    </div>
     </div>
 </>
     

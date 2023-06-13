@@ -191,15 +191,16 @@ const App = ({themeValue, onomatopeValue}) => {
 
     <><div className='Upper'>
             <div className='concept'>
-              <div>テーマ：{themeValue}     </div>
-              <div>オノマトペ：{onomatopeValue} </div>
+              <div>テーマ：<div className='theme-back'>{themeValue}</div></div>
+              <div>オノマトペ:<div className='theme-back'>{onomatopeValue}</div></div>
             </div>{/*concept*/}
-    </div>
+    </div>{/*upper*/}
     
     <div className='Lower'>
         <div className='left'>
           <div className="example">
-                <div className='imageexample'>
+              <div className='example-back'></div>
+                <div className='image-example'>
                   {clickedObject && clickedObject.name.includes("rect-") ? (
                     <img src="./red_rectangle.png" style={{ width: "50px" }} />
                   ) : null}
@@ -210,16 +211,15 @@ const App = ({themeValue, onomatopeValue}) => {
                     <img src="./ike.png" style={{ width: "50px" }} />
                   ) : null}
                 </div>
-                <div className='textexample'>
+                <div className='text-example'>
                   <span className='name2'>{clickedObject && clickedObject.name2}</span>
                   <span className='prevCount'>{clickedObject && clickedObject.prevCount}</span>
                 </div>
           </div>{/*example*/}
 
-          <div className="buttons">
+          <div className="buttons-main">
             {/* <h1>buttons</h1> */}
-            <div className='buttons-background'>
-            </div>
+            <div className='buttons-background'></div>
             <button onMouseDown={() => Delete(canvas1)}>delete</button>
             <button onMouseDown={() => addRect(canvas1)}><img src="./red_rectangle.png" style={{ width: "50px" }} /></button>
             <button onMouseDown={() => addPic(canvas1)}><img src="./tree_green.png" style={{ width: "50px" }} /></button>
