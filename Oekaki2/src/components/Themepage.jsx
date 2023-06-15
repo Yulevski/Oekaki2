@@ -19,39 +19,43 @@ function Themepage({themeValue,setThemeValue }) {
 
   return( 
     <>
-    <div className="Themepage">
-    <li>
-        <Link to="/onomatope">Next</Link>
+    <div className="Theme-page">
+
+      <div className='top-theme'>
+      <h1>①この中から共感するテーマを選ぼう</h1>
+      </div>
+
+    <li className='bottom-theme'>
+    <h2>②テーマを選んだら<Link to="/onomatope">次へ</Link></h2>
     </li>
-    <h2>Here is Theme in themepage</h2>
     {/* <textarea value={themeValue} onChange={handleChange} /> */}
     {/* Six buttons with assigned values */}
-   <div className="buttons-theme">
+   {/* <div className="buttons"> */}
     <button onClick={() =>handleButtonClick('TVの星占いが最下位であった')}
-        className={selectedButton === 'TVの星占いが最下位であった' ? 'selected' : ''}
+        className={selectedButton === 'TVの星占いが最下位であった' ? 'selected' : 'theme1'}
     >TVの星占いが最下位であった</button>
     
    <button onClick={() => handleButtonClick('真夏の外出')}
-          className={selectedButton === '真夏の外出' ? 'selected' : ''}>
+          className={selectedButton === '真夏の外出' ? 'selected' : 'buttons-theme2'}>
           真夏の外出
    </button>
 
     <button onClick={() => handleButtonClick('昼食後に眠い')}
-          className={selectedButton === '昼食後に眠い' ? 'selected' : ''}
+          className={selectedButton === '昼食後に眠い' ? 'selected' : 'buttons-theme3'}
     >昼食後に眠い</button>
 
     <button onClick={() => handleButtonClick('春の予感')}
-          className={selectedButton === '春の予感' ? 'selected' : ''}
+          className={selectedButton === '春の予感' ? 'selected' : 'buttons-theme4'}
     >春の予感</button>
 
     <button onClick={() => handleButtonClick('朝もう少し寝たい時')}
-          className={selectedButton === '朝もう少し寝たい時' ? 'selected' : ''}
+          className={selectedButton === '朝もう少し寝たい時' ? 'selected' : 'buttons-theme5'}
     >朝もう少し寝たい時</button>
     
     <button  onClick={() => handleButtonClick('冬の予感')}
-          className={selectedButton === '冬の予感' ? 'selected' : ''}
+          className={selectedButton === '冬の予感' ? 'selected' : 'buttons-theme6'}
     >冬の予感</button>
-    </div>
+    {/* </div> */}
     </div>
 </>
     

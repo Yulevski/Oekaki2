@@ -1,0 +1,53 @@
+.Onomatope-page {  display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 0.3fr 0.3fr 0.3fr 2fr 2fr 2fr 0.3fr;
+    grid-auto-columns: 1fr;
+    gap: 10px 10px;
+    /* grid-auto-flow: row; */
+    grid-template-areas:
+      "Top Top Top"
+      "Top2 Top2 Top2"
+      "Top3 Top3 Top3"
+      "area1 area2 area3"
+      "area4 area5 area6"
+      "area7 area8 area9"
+      "Bottom Bottom Bottom";
+  }
+  
+  .top-onomatope { grid-area: Top; }
+  .text-input{grid-area: Top2;
+    margin-right:auto;
+margin-left:auto;
+            }
+
+  .top3
+  {grid-area: Top3;
+margin-right:auto;
+margin-left:auto;
+}
+  
+  .area1 { grid-area: area1; }
+  .くるくる{grid-area:area1;}
+  
+  .area2 { grid-area: area2; }
+  
+  .area3 { grid-area: area3; }
+  
+  .area4 { grid-area: area4; }
+  
+  .area5 { grid-area: area5; }
+  
+  .area6 { grid-area: area6; }
+  
+  .area7 { grid-area: area7; }
+  
+  .area8 { grid-area: area8; }
+  
+  .area9 { grid-area: area9; }
+  
+  .bottom-onomatope { grid-area: Bottom; 
+    list-style: none;
+    margin-right: 0%;
+    margin-left: auto;
+}
+  
