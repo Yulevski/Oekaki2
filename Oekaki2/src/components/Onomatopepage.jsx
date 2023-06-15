@@ -26,12 +26,12 @@ function Onomatope({themeValue,onomatopeValue, setOnomatopeValue}) {
     <button
         onClick={() => handleButtonClick('くるくる')}
         className={selectedButton === 'くるくる' ? 'selected' : ''}>
-        がたがた
+        くるくる
       </button>
       <button
         onClick={() => handleButtonClick('のろのろ')}
         className={selectedButton === 'のろのろ' ? 'selected' : ''}>
-        がたがた
+        のろのろ
       </button>
       <button
         onClick={() => handleButtonClick('ぴかぴか')}

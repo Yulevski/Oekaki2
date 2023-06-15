@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { fabric } from "fabric";
 import pic from "./tree_green.png";
 import pic1 from "./ike.png";
-import './Main.css';
+// import './Main.css';
+import './Main-try.css';
 import { NavLink, Link } from 'react-router-dom';
 
 
@@ -189,14 +190,15 @@ const App = ({themeValue, onomatopeValue}) => {
 
   return (
 
-    <><div className='Upper'>
+    <><div className='All'>
+    <div className='Upper'>
             <div className='concept'>
-              <div>テーマ：<div className='theme-back'>{themeValue}</div></div>
-              <div>オノマトペ:<div className='theme-back'>{onomatopeValue}</div></div>
+              <div className='top'>テーマ：<div className='theme-back'>{themeValue}</div></div>
+              <div className='top'>オノマトペ：<div className='theme-back'>{onomatopeValue}</div></div>
             </div>{/*concept*/}
     </div>{/*upper*/}
     
-    <div className='Lower'>
+    {/* <div className='Lower'> */}
         <div className='left'>
           <div className="example">
               <div className='example-back'></div>
@@ -284,7 +286,8 @@ const App = ({themeValue, onomatopeValue}) => {
             </div>
           </div>{/*textbox-contents*/}
         </div>{/*textBox */}
-      </div>{/*Lower */}</>
+      {/* </div>Lower */}
+      </div>{/*All*/}</>
   );
 };
 

@@ -1,0 +1,41 @@
+.All {  display: grid;
+    grid-template-columns: 0.9fr 3.8fr 0.9fr;
+    grid-template-rows: 0.2fr 4.0fr 0.0fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "Top Top Top"
+      "Left Main Right"
+      ". . .";
+  }
+  
+  .canvas1 { grid-area: Main; }
+  
+  .Upper { grid-area: Top; }
+    .concept{
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .top{
+        float:left;        
+    }
+    .theme-back{
+        background-color: #a09e9e;
+    }
+  
+  .Left { grid-area: Left;}
+    .example{
+    /* background-color: rgb(192, 192, 255); */
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    /* width: 100px; */
+    
+    }
+    .buttons-main{
+        display: flex;
+        flex-direction: column;
+    }
+  
+  .textBox { grid-area: Right; }
+  
