@@ -17,7 +17,15 @@ function Onomatope({themeValue,onomatopeValue, setOnomatopeValue}) {
   return (
     <><div className='Onomatope-page'>
 
-         <h2 className='top-onomatope'>③「{themeValue}」に合うオノマトペを入力しよう</h2>
+     <div className='top-onomatope'>
+       <h2 className='onomatope-selection24'>③</h2>
+       <h2 className='onomatope-selection32'>「{themeValue}」</h2>
+       <h2 className='onomatope-selection24'>に合う</h2>
+       <h2 className='onomatope-selection32'>オノマトペ</h2>
+       <h2 className='onomatope-selection24'>を決めよう</h2>
+     </div>
+
+
       <textarea className="text-input" placeholder="オノマトペ？"value={onomatopeValue} onChange={handleChange} />
     {/* <button onClick={() => setOnomatopeValue('Value 1')}>Button 1</button> */}
     {/* 例に飛ぶリンク↓ */}
@@ -72,8 +80,9 @@ function Onomatope({themeValue,onomatopeValue, setOnomatopeValue}) {
     {/* </div> */}
 
     <li className='bottom-onomatope'>
-        <h2>④選択したら<Link to="/main">次へ</Link></h2>
+        <h2 className='onomatope-next'>④オノマトペを決めたら<Link to="/main">次へ</Link></h2>
     </li>
+
     </div>
     
       

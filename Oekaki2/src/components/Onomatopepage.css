@@ -14,17 +14,50 @@
       "Bottom Bottom Bottom";
   }
   
-  .top-onomatope { grid-area: Top; }
-  .text-input{grid-area: Top2;
+  .top-onomatope { grid-area: Top;
+    font-family: ROboto;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+  }
+    .onomatope-selection32{
+      font-size: 32px;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 600;
+    }
+    .onomatope-selection24{
+      font-size: 24px;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 400;
+    }
+
+  .text-input{
+    grid-area: Top2;
     margin-right:auto;
-margin-left:auto;
+    margin-left:auto;
+    font-size:24px;
+    border: 2px solid #cccccc;
+    border-radius: 6px;
+    padding: 10px;
+    line-height: 1;
+    height: 1em;
+    width: 200px;
+    font-family: Roboto;
             }
+    ::placeholder{ /* Others */
+         color: #748192;
+         font-size:16px;
+             }
 
   .top3
   {grid-area: Top3;
-margin-right:auto;
-margin-left:auto;
-}
+  margin-right:auto;
+  margin-left:auto;
+  font-family: ROboto;
+
+  }
   
   .area1 { grid-area: area1; }
   .くるくる{grid-area:area1;}
@@ -49,5 +82,17 @@ margin-left:auto;
     list-style: none;
     margin-right: 0%;
     margin-left: auto;
+    font-family: ROboto;
 }
+
+.bottom-onomatope { grid-area: Bottom;
+  list-style: none;
+  margin-right: 0%;
+  margin-left: auto; }
+  .onomatope-next{
+  font-size: 20px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  }
   

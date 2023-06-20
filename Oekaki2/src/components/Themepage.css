@@ -1,8 +1,11 @@
 
 .selected {
     /* Styles for the active button */
-    background-color: #ff0000;
+    background-color: #7f7f7f;
     color: #fff;
+    font-size: 28px;
+    font-family: Roboto;
+
   }
 
   .Theme-page {  display: grid;
@@ -18,12 +21,34 @@
       "Bottom Bottom Bottom";
   }
   
-  .top-theme { grid-area: Top; }
+  .top-theme { grid-area: Top; 
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;}
+
+    .theme-selection32{
+      font-size: 32px;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 600;
+    }
+    .theme-selection24{
+      font-size: 24px;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 400;
+    }
   
   .bottom-theme { grid-area: Bottom;
         list-style: none;
         margin-right: 0%;
         margin-left: auto; }
+    .theme-next{
+      font-size: 20px;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 400;
+    }
   
   .buttons-theme1{ grid-area: area1; }
   .buttons-theme2{ grid-area: area2; }

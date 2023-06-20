@@ -22,17 +22,19 @@ function Themepage({themeValue,setThemeValue }) {
     <div className="Theme-page">
 
       <div className='top-theme'>
-      <h1>①この中から共感するテーマを選ぼう</h1>
+          <h1 className='theme-selection24'>①この中から</h1>
+          <h1 className='theme-selection32'>感情がイメージしやすいテーマ</h1>
+          <h1 className='theme-selection24'>を選ぼう</h1>
       </div>
 
     <li className='bottom-theme'>
-    <h2>②テーマを選んだら<Link to="/onomatope">次へ</Link></h2>
+    <h2 className='theme-next'>②テーマを選んだら<Link to="/onomatope">次へ</Link></h2>
     </li>
     {/* <textarea value={themeValue} onChange={handleChange} /> */}
     {/* Six buttons with assigned values */}
    {/* <div className="buttons"> */}
     <button onClick={() =>handleButtonClick('TVの星占いが最下位であった')}
-        className={selectedButton === 'TVの星占いが最下位であった' ? 'selected' : 'theme1'}
+        className={selectedButton === 'TVの星占いが最下位であった' ? 'selected' : 'buttons-theme1'}
     >TVの星占いが最下位であった</button>
     
    <button onClick={() => handleButtonClick('真夏の外出')}
