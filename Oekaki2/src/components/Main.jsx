@@ -56,7 +56,7 @@ const App = ({themeValue, onomatopeValue}) => {
       //  width: `calc(100% - 200px)`,
       // width:`600px`,
       width:0.75*window.innerWidth,
-      backgroundColor: "pink",
+      backgroundColor: "white",
     }); 
     
     canvas1.on("mouse:down", (options) => {
@@ -338,7 +338,7 @@ const App = ({themeValue, onomatopeValue}) => {
         <div className='left'>
           
           <div className="buttons-main">
-            <p1 className="from-here">ここから<span>オブジェクトを選ぼう</span></p1>
+            <p1 className="from-here">オブジェクトを<span>クリックして挿入</span></p1>
             <div className='buttons-background'></div>
             <button onMouseDown={() => Delete(canvas1)}>Delete</button>
             <button onMouseDown={() => addRect(canvas1)}><img src="./red_rectangle.png" style={{ width: "50px" }} /></button>

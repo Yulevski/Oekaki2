@@ -1,12 +1,12 @@
 .Onomatope-page {  display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 0.5fr 1fr 0.5fr;
     grid-template-rows: 0.3fr 0.3fr 0.3fr 2fr 2fr 2fr 0.3fr;
     grid-auto-columns: 1fr;
     gap: 10px 10px;
     /* grid-auto-flow: row; */
     grid-template-areas:
-      "Top Top Top"
-      "Top2 Top2 Top2"
+      "Top Top Top6"
+      "Top2 Top2 Top4"
       "Top3 Top3 Top3"
       "area1 area2 area3"
       "area4 area5 area6"
@@ -14,8 +14,16 @@
       "Bottom Bottom Bottom";
   }
   
+  .onomatope-input{
+    grid-area: Top2;
+    display: flex;
+
+  }
+  .hint-button{
+    font-family: Roboto;
+  }
   .top-onomatope { grid-area: Top;
-    font-family: ROboto;
+    font-family: Roboto;
     display: flex;
     flex-direction: row;
     align-items: baseline;
@@ -51,6 +59,8 @@
          font-size:16px;
              }
 
+    
+
   .top3
   {grid-area: Top3;
   margin-right:auto;
@@ -85,7 +95,7 @@
     font-family: ROboto;
 }
 
-.bottom-onomatope { grid-area: Bottom;
+.bottom-onomatope { grid-area: Top6;
   list-style: none;
   margin-right: 0%;
   margin-left: auto; }
