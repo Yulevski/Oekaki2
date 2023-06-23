@@ -13,8 +13,13 @@ function Onomatope({themeValue,onomatopeValue, setOnomatopeValue}) {
   const handleButtonClick = (onomatope) => {
     setSelectedButton(onomatope);
     setOnomatopeValue(onomatope);
-    setShowButtons(true);
+    // setShowButtons(true);
   };
+  const handleButtonClickNext = () => {
+    setShowButtons(!showButtons);
+  };
+  
+  
 
   return (
     <><div className='Onomatope-page'>
@@ -25,16 +30,18 @@ function Onomatope({themeValue,onomatopeValue, setOnomatopeValue}) {
        <h2 className='onomatope-selection24'>に合う</h2>
        <h2 className='onomatope-selection32'>オノマトペ</h2>
        <h2 className='onomatope-selection24'>を決めよう</h2>
+       <li className='bottom-onomatope'>
+        <h2 className='onomatope-next'>④オノマトペを決めたら<Link to="/main">次へ</Link></h2>
+      </li>
      </div>
 
       <div className='onomatope-input'>
       <textarea className="text-input" placeholder="どきどき、ぽたぽた、etc"value={onomatopeValue} onChange={handleChange} />
-      <button className="hint-button" onClick={() => setShowButtons(!showButtons)}>ヒントを表示</button>
-      </div>    
+      <button className="hint-button" onClick={handleButtonClickNext}>ヒントを表示</button>      </div>    
       {/* <button onClick={() => setOnomatopeValue('Value 1')}>Button 1</button> */}
     {/* 例に飛ぶリンク↓ */}
     {/* <div className='buttons-onomatope'> */}
-    <p1 className="top3">オノマトペを入力しよう↑</p1>
+    <p1 className="top3">↑オノマトペを入力しよう</p1>
       <button
         onClick={() => handleButtonClick('くるくる')}
         className={selectedButton === 'くるくる' ? 'selected' : 'area1'}
@@ -92,9 +99,7 @@ function Onomatope({themeValue,onomatopeValue, setOnomatopeValue}) {
 
     {/* </div> */}
 
-    <li className='bottom-onomatope'>
-        <h2 className='onomatope-next'>④オノマトペを決めたら<Link to="/main">次へ</Link></h2>
-    </li>
+    
 
     </div>
     

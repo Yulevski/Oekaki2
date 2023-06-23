@@ -39,10 +39,12 @@
       font-weight: 400;
     }
   
-  .bottom-theme { grid-area: Bottom;
-        list-style: none;
-        margin-right: 0%;
-        margin-left: auto; }
+  .bottom-theme { grid-area: Top;
+    list-style: none;
+    margin-right: 0%;
+    margin-left: auto;
+    font-family: ROboto;
+        }
     .theme-next{
       font-size: 20px;
       font-family: Roboto;

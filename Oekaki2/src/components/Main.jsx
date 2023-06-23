@@ -316,7 +316,81 @@ const App = ({themeValue, onomatopeValue}) => {
     // console.log("clickedobject",clickedObject);
   };
 
-
+  const handleSave = () => {
+    // Create an object to hold the data you want to save
+    const dataToSave = {
+      themeValue,
+      onomatopeValue,
+      canvas1,
+      texts,
+      // Add any other data you want to save
+    };
+  
+    // Convert the data to JSON
+    const jsonData = JSON.stringify(dataToSave);
+  
+    // Create a blob from the JSON data
+    const blob = new Blob([jsonData], { type: 'application/json' });
+  
+    // Create a URL for the blob
+    const url = URL.createObjectURL(blob);
+  
+    // Create a link element
+    const link = document.createElement('a');
+  
+    // Set the link's properties
+    link.href = url;
+    link.download = 'saved_data.json';
+  
+    // Simulate a click on the link to trigger the download
+    link.click();
+  
+    // Clean up by revoking the URL object
+    URL.revokeObjectURL(url);
+  };
+  const handleLoad = (event) => {
+    // Get the selected file from the input element
+    const file = event.target.files[0];
+  
+    // Create a file reader
+    const reader = new FileReader();
+  
+    // Set the callback function for when the file is loaded
+    reader.onload = (e) => {
+      try {
+        // Parse the loaded JSON data
+        const jsonData = e.target.result;
+        const parsedData = JSON.parse(jsonData);
+  
+        // Extract the saved values
+        const {
+          themeValue,
+          onomatopeValue,
+          canvas1,
+          texts,
+          // Extract any other saved values
+        } = parsedData;
+  
+        // Restore the values in the component's state
+        setThemeValue(themeValue);
+        setOnomatopeValue(onomatopeValue);
+        setCanvas1(canvas1);
+        setTexts(texts);
+        // Restore any other values
+  
+        // Optionally, perform additional actions based on the loaded data
+  
+        console.log('Data loaded successfully!');
+      } catch (error) {
+        console.error('Error loading data:', error);
+      }
+    };
+  
+    // Read the file as text
+    reader.readAsText(file);
+  };
+  
+  
   return (
 
     <><div className='All'>
@@ -330,6 +404,9 @@ const App = ({themeValue, onomatopeValue}) => {
               <p1 className='top20'>から想起される</p1>
               <p1 className='top24'>感情を反映した絵</p1>
               <p1 className='top20'>を描こう</p1>
+              <button onClick={handleSave}>Save</button>
+              <button onClick={handleLoad}>load</button>
+              <input type="file" onChange={handleLoad} accept=".json" />
 
             </div>{/*concept*/}
     </div>{/*upper*/}
