@@ -2,14 +2,21 @@
 import React, { useState, useEffect } from 'react';
 import { fabric } from "fabric";
 import pic from "./pictures/tree_green.png";
+import picbw from "./pictures/tree_green bw.png";
 import pic1 from "./pictures/ike.png";
+import pic1bw from "./pictures/ike bw.png";
 import pic2 from "./pictures/japan_tourou.png";
 import pic3 from "./pictures/kouyou_eda_momiji.png";
+import pic3bw from "./pictures/kouyou_eda_momiji bw.png";
 import pic4 from "./pictures/kumo.png";
 import pic5 from "./pictures/mark_tenki_hare 2.png";
+import pic5bw from "./pictures/mark_tenki_hare bw.png";
 import pic6 from "./pictures/mark_tenki_moon.png";
+import pic6bw from "./pictures/mark_tenki_moon bw.png";
 import pic7 from "./pictures/mizutamari_hansya 2.png";
+import pic7bw from "./pictures/mizutamari_hansya bw.png";
 import pic8 from "./pictures/space04_moon.png";
+import pic8bw from "./pictures/space04_moon bw.png";
 import pic9 from "./pictures/stone.png";
 // import './Main.css';
 import './Main-try.css';
@@ -34,6 +41,7 @@ const App = ({themeValue, onomatopeValue}) => {
   const [rectCount3, setRectCount3] = useState(0);
   const [rectCount4, setRectCount4] = useState(0);
   const [imageCount, setimageCount] = useState(0);
+  const [imageCountbw, setimageCountbw] = useState(0);
   const [imageCount1, setimageCount1] = useState(0);
   const [imageCount2, setimageCount2] = useState(0);
   const [imageCount3, setimageCount3] = useState(0);
@@ -198,6 +206,21 @@ const App = ({themeValue, onomatopeValue}) => {
       console.log("img name is", imgWithText.name); 
     });
   };
+  const addPicbw = (canvi) => {
+    setimageCountbw((prevCount) =>{
+      // console.log("prevCount is", prevCount);
+      return prevCount + 1;});
+    fabric.Image.fromURL(picbw, function (img) {
+      const imgWithText = new ImageWithText(img);
+      imgWithText.set({ name: "tree-bw" + Date.now(),
+      name2:"木モノトーン",
+      prevCount: imageCountbw + 1,
+    });
+      canvi.add(imgWithText);
+      // canvi.add(img);
+      console.log("img name is", imgWithText.name); 
+    });
+  };
 
   const addPic1 = (canvi) => {
     setimageCount1((prevCount) =>{
@@ -213,6 +236,9 @@ const App = ({themeValue, onomatopeValue}) => {
       console.log("img name is", imgWithText.name); 
     });
   };
+
+
+
   const addPic2 = (canvi) => {
     setimageCount2((prevCount) =>{
       // console.log("prevCount is", prevCount);
@@ -482,14 +508,21 @@ const App = ({themeValue, onomatopeValue}) => {
             <button onMouseDown={() => addRect3(canvas1)}><img src="./green_rectangle.png" style={{ height:"50px" }} /></button>
             <button onMouseDown={() => addRect4(canvas1)}><img src="./gray_rectangle.png" style={{ height:"50px" }} /></button>
             <button onMouseDown={() => addPic(canvas1)}><img src="./tree_green.png" style={{ height:"50px" }} /></button>
+            <button onMouseDown={() => addPicbw(canvas1)}><img src="./tree_green bw.png" style={{ height:"50px" }} /></button>
             <button onMouseDown={() => addPic1(canvas1)}><img src="./ike.png" style={{ height:"50px" }} /></button>
+            <button onMouseDown={() => addPic1(canvas1)}><img src="./ike bw.png" style={{ height:"50px" }} /></button>
             <button onMouseDown={() => addPic2(canvas1)}><img src="./japan_tourou.png" style={{ height:"50px" }} /></button>
             <button onMouseDown={() => addPic3(canvas1)}><img src="./kouyou_eda_momiji.png" style={{ height:"50px" }} /></button>
+            <button onMouseDown={() => addPic3(canvas1)}><img src="./kouyou_eda_momiji bw.png" style={{ height:"50px" }} /></button>
             <button onMouseDown={() => addPic4(canvas1)}><img src="./kumo.png" style={{ height:"50px" }} /></button>
             <button onMouseDown={() => addPic5(canvas1)}><img src="./mark_tenki_hare 1.png" style={{ height:"50px" }} /></button>
+            <button onMouseDown={() => addPic5(canvas1)}><img src="./mark_tenki_hare bw.png" style={{ height:"50px" }} /></button>
             <button onMouseDown={() => addPic6(canvas1)}><img src="./mark_tenki_moon.png" style={{ height:"50px" }} /></button>
+            <button onMouseDown={() => addPic6(canvas1)}><img src="./mark_tenki_moon bw.png" style={{ height:"50px" }} /></button>
             <button onMouseDown={() => addPic7(canvas1)}><img src="./mizutamari_hansya 1.png" style={{ height:"50px" }} /></button>
+            <button onMouseDown={() => addPic7(canvas1)}><img src="./mizutamari_hansya bw.png" style={{ height:"50px" }} /></button>
             <button onMouseDown={() => addPic8(canvas1)}><img src="./space04_moon.png" style={{ height:"50px" }} /></button>
+            <button onMouseDown={() => addPic8(canvas1)}><img src="./space04_moon bw.png" style={{ height:"50px" }} /></button>
             <button onMouseDown={() => addPic9(canvas1)}><img src="./stone.png" style={{ height:"50px" }} /></button>
             
             {/* <button onClick={() => console.log(canvas1.getActiveObject())}>Test</button> */}
