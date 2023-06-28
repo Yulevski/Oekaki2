@@ -35,7 +35,8 @@
       font-weight: 600;
     }
   
-  .Left { grid-area: Left;}
+  .left { grid-area: Left;
+    box-shadow: 2px 2px 4px rgb(187, 186, 186)}
     .example{
     /* background-color: rgb(192, 192, 255); */
     display: flex;
@@ -78,3 +79,7 @@
   span{
       display: block;
     }
+  
+  .textBox{
+    box-shadow: -2px 2px 2px 1px rgb(187, 186, 186);
+  }
