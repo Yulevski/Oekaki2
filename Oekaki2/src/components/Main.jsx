@@ -6,9 +6,9 @@ import pic1 from "./pictures/ike.png";
 import pic2 from "./pictures/japan_tourou.png";
 import pic3 from "./pictures/kouyou_eda_momiji.png";
 import pic4 from "./pictures/kumo.png";
-import pic5 from "./pictures/mark_tenki_hare 1.png";
+import pic5 from "./pictures/mark_tenki_hare 2.png";
 import pic6 from "./pictures/mark_tenki_moon.png";
-import pic7 from "./pictures/mizutamari_hansya 1.png";
+import pic7 from "./pictures/mizutamari_hansya 2.png";
 import pic8 from "./pictures/space04_moon.png";
 import pic9 from "./pictures/stone.png";
 // import './Main.css';
@@ -30,6 +30,9 @@ const App = ({themeValue, onomatopeValue}) => {
   
   //図形カウント用
   const [rectCount, setRectCount] = useState(0);
+  const [rectCount2, setRectCount2] = useState(0);
+  const [rectCount3, setRectCount3] = useState(0);
+  const [rectCount4, setRectCount4] = useState(0);
   const [imageCount, setimageCount] = useState(0);
   const [imageCount1, setimageCount1] = useState(0);
   const [imageCount2, setimageCount2] = useState(0);
@@ -122,10 +125,10 @@ const App = ({themeValue, onomatopeValue}) => {
     // console.log("prevCount is", prevCount);
     return prevCount + 1;});
     const rect = new RectWithText({
-      height: 280,
+      height: 200,
       width: 200,
-      fill: "red",
-      name: "rect-" + Date.now(),
+      fill: "#FF5353",
+      name: "rect-red" + Date.now(),
       name2:"四角",
       prevCount: rectCount + 1,
     });
@@ -135,6 +138,50 @@ const App = ({themeValue, onomatopeValue}) => {
     canvi.add(rect);
     //canvi.renderAll();
   };
+
+  const addRect2 = (canvi) => {
+    setRectCount2((prevCount) =>{
+    // console.log("prevCount is", prevCount);
+    return prevCount + 1;});
+    const rect = new RectWithText({
+      height: 200,
+      width: 200,
+      fill: "#54ABFB",
+      name: "rect-blue" + Date.now(),
+      name2:"四角",
+      prevCount: rectCount2 + 1,
+    });
+    canvi.add(rect);
+  };
+  const addRect3 = (canvi) => {
+    setRectCount3((prevCount) =>{
+    // console.log("prevCount is", prevCount);
+    return prevCount + 1;});
+    const rect = new RectWithText({
+      height: 200,
+      width: 200,
+      fill: "#00DB23",
+      name: "rect-green" + Date.now(),
+      name2:"四角",
+      prevCount: rectCount3 + 1,
+    });
+    canvi.add(rect);
+  };
+  const addRect4 = (canvi) => {
+    setRectCount4((prevCount) =>{
+    // console.log("prevCount is", prevCount);
+    return prevCount + 1;});
+    const rect = new RectWithText({
+      height: 200,
+      width: 200,
+      fill: "#898989",
+      name: "rect-gray" + Date.now(),
+      name2:"四角",
+      prevCount: rectCount4 + 1,
+    });
+    canvi.add(rect);
+  };
+
 
   const addPic = (canvi) => {
     setimageCount((prevCount) =>{
@@ -315,81 +362,94 @@ const App = ({themeValue, onomatopeValue}) => {
     clickedObject.setText(name, e.target.value); //クリックされた（アクティブな）RectWithTextのテキストプロパティを更新
     // console.log("clickedobject",clickedObject);
   };
-
+ 
   const handleSave = () => {
-    // Create an object to hold the data you want to save
-    const dataToSave = {
-      themeValue,
-      onomatopeValue,
-      canvas1,
-      texts,
-      // Add any other data you want to save
-    };
-  
-    // Convert the data to JSON
-    const jsonData = JSON.stringify(dataToSave);
-  
-    // Create a blob from the JSON data
-    const blob = new Blob([jsonData], { type: 'application/json' });
-  
-    // Create a URL for the blob
-    const url = URL.createObjectURL(blob);
-  
-    // Create a link element
-    const link = document.createElement('a');
-  
-    // Set the link's properties
-    link.href = url;
-    link.download = 'saved_data.json';
-  
-    // Simulate a click on the link to trigger the download
-    link.click();
-  
-    // Clean up by revoking the URL object
-    URL.revokeObjectURL(url);
+    if (canvas1) {
+      const objects = canvas1.getObjects().map((obj) => {
+        const { name, name2, prevcount, descriptionColor, descriptionPosition, descriptionMetaphor, descriptionMove, descriptionContrast, ...rest } = obj.toObject();        
+        
+        if (obj instanceof fabric.Image && obj.getSrc()) {
+          const imgElement = document.createElement('img');
+          imgElement.src = obj.getSrc();
+          rest.element = imgElement;
+        }
+        return {
+          ...rest,
+          name,
+          name2,
+          prevcount,
+          descriptionColor,
+          descriptionPosition,
+          descriptionMetaphor,
+          descriptionMove,
+          descriptionContrast
+        };
+      });
+
+      const json = JSON.stringify(objects);
+
+      // Create a new Blob with the JSON data
+      const blob = new Blob([json], { type: 'application/json' });
+
+      // Create a temporary anchor element
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'canvas.json';
+      a.click();
+
+      // Clean up the temporary anchor element
+      URL.revokeObjectURL(a.href);
+    }
   };
+
   const handleLoad = (event) => {
-    // Get the selected file from the input element
     const file = event.target.files[0];
-  
-    // Create a file reader
     const reader = new FileReader();
-  
-    // Set the callback function for when the file is loaded
+
     reader.onload = (e) => {
-      try {
-        // Parse the loaded JSON data
-        const jsonData = e.target.result;
-        const parsedData = JSON.parse(jsonData);
-  
-        // Extract the saved values
-        const {
-          themeValue,
-          onomatopeValue,
-          canvas1,
-          texts,
-          // Extract any other saved values
-        } = parsedData;
-  
-        // Restore the values in the component's state
-        setThemeValue(themeValue);
-        setOnomatopeValue(onomatopeValue);
-        setCanvas1(canvas1);
-        setTexts(texts);
-        // Restore any other values
-  
-        // Optionally, perform additional actions based on the loaded data
-  
-        console.log('Data loaded successfully!');
-      } catch (error) {
-        console.error('Error loading data:', error);
+      const contents = e.target.result;
+      const objects = JSON.parse(contents);
+
+      if (canvas1) {
+        canvas1.clear();
+        objects.forEach((obj) => {
+          const { name, name2, prevcount, descriptionColor, descriptionPosition, descriptionMetaphor, descriptionMove, descriptionContrast, ...rest } = obj;
+          if (rest.type === 'rect') {
+            const rect = new fabric.Rect(rest);
+            rect.name = name;
+            rect.name2 = name2;
+            rect.prevcount = prevcount;
+            rect.descriptionColor = descriptionColor;
+            rect.descriptionPosition = descriptionPosition;
+            rect.descriptionMetaphor = descriptionMetaphor;
+            rect.descriptionMove = descriptionMove;
+            rect.descriptionContrast = descriptionContrast;
+            canvas1.add(rect);
+          } else if (rest.type === 'image') {
+            if (element && element.src) {
+            fabric.Image.fromURL(element.src, (image) => {
+              image.name = name;
+              image.name2 = name2;
+              image.prevcount = prevcount;
+              image.descriptionColor = descriptionColor;
+              image.descriptionPosition = descriptionPosition;
+              image.descriptionMetaphor = descriptionMetaphor;
+              image.descriptionMove = descriptionMove;
+              image.descriptionContrast = descriptionContrast;
+              canvas1.add(image);
+            });
+          }
+        }
+        });
+
+        canvas1.renderAll();
       }
     };
-  
-    // Read the file as text
+
     reader.readAsText(file);
   };
-  
+
+
   
   return (
 
@@ -405,7 +465,6 @@ const App = ({themeValue, onomatopeValue}) => {
               <p1 className='top24'>感情を反映した絵</p1>
               <p1 className='top20'>を描こう</p1>
               <button onClick={handleSave}>Save</button>
-              <button onClick={handleLoad}>load</button>
               <input type="file" onChange={handleLoad} accept=".json" />
 
             </div>{/*concept*/}
@@ -417,18 +476,21 @@ const App = ({themeValue, onomatopeValue}) => {
           <div className="buttons-main">
             <p1 className="from-here">オブジェクトを<span>クリックして挿入</span></p1>
             <div className='buttons-background'></div>
-            <button onMouseDown={() => Delete(canvas1)}>Delete</button>
-            <button onMouseDown={() => addRect(canvas1)}><img src="./red_rectangle.png" style={{ width: "50px" }} /></button>
-            <button onMouseDown={() => addPic(canvas1)}><img src="./tree_green.png" style={{ width: "50px" }} /></button>
-            <button onMouseDown={() => addPic1(canvas1)}><img src="./ike.png" style={{ width: "50px" }} /></button>
-            <button onMouseDown={() => addPic2(canvas1)}><img src="./japan_tourou.png" style={{ width: "50px" }} /></button>
-            <button onMouseDown={() => addPic3(canvas1)}><img src="./kouyou_eda_momiji.png" style={{ width: "50px" }} /></button>
-            <button onMouseDown={() => addPic4(canvas1)}><img src="./kumo.png" style={{ width: "50px" }} /></button>
-            <button onMouseDown={() => addPic5(canvas1)}><img src="./mark_tenki_hare 1.png" style={{ width: "50px" }} /></button>
-            <button onMouseDown={() => addPic6(canvas1)}><img src="./mark_tenki_moon.png" style={{ width: "50px" }} /></button>
-            <button onMouseDown={() => addPic7(canvas1)}><img src="./mizutamari_hansya 1.png" style={{ width: "50px" }} /></button>
-            <button onMouseDown={() => addPic8(canvas1)}><img src="./space04_moon.png" style={{ width: "50px" }} /></button>
-            <button onMouseDown={() => addPic9(canvas1)}><img src="./stone.png" style={{ width: "50px" }} /></button>
+            <button onMouseDown={() => Delete(canvas1)} style={{  height:"25px" }}>Delete</button>
+            <button onMouseDown={() => addRect(canvas1)}><img src="./red_rectangle.png" style={{  height:"50px" }} /></button>
+            <button onMouseDown={() => addRect2(canvas1)}><img src="./blue_rectangle.png" style={{ height:"50px" }} /></button>
+            <button onMouseDown={() => addRect3(canvas1)}><img src="./green_rectangle.png" style={{ height:"50px" }} /></button>
+            <button onMouseDown={() => addRect4(canvas1)}><img src="./gray_rectangle.png" style={{ height:"50px" }} /></button>
+            <button onMouseDown={() => addPic(canvas1)}><img src="./tree_green.png" style={{ height:"50px" }} /></button>
+            <button onMouseDown={() => addPic1(canvas1)}><img src="./ike.png" style={{ height:"50px" }} /></button>
+            <button onMouseDown={() => addPic2(canvas1)}><img src="./japan_tourou.png" style={{ height:"50px" }} /></button>
+            <button onMouseDown={() => addPic3(canvas1)}><img src="./kouyou_eda_momiji.png" style={{ height:"50px" }} /></button>
+            <button onMouseDown={() => addPic4(canvas1)}><img src="./kumo.png" style={{ height:"50px" }} /></button>
+            <button onMouseDown={() => addPic5(canvas1)}><img src="./mark_tenki_hare 1.png" style={{ height:"50px" }} /></button>
+            <button onMouseDown={() => addPic6(canvas1)}><img src="./mark_tenki_moon.png" style={{ height:"50px" }} /></button>
+            <button onMouseDown={() => addPic7(canvas1)}><img src="./mizutamari_hansya 1.png" style={{ height:"50px" }} /></button>
+            <button onMouseDown={() => addPic8(canvas1)}><img src="./space04_moon.png" style={{ height:"50px" }} /></button>
+            <button onMouseDown={() => addPic9(canvas1)}><img src="./stone.png" style={{ height:"50px" }} /></button>
             
             {/* <button onClick={() => console.log(canvas1.getActiveObject())}>Test</button> */}
           </div>{/*buttons*/}
@@ -446,9 +508,19 @@ const App = ({themeValue, onomatopeValue}) => {
           <div className="example">
               <div className='example-back'></div>
                 <div className='image-example'>
-                  {clickedObject && clickedObject.name.includes("rect-") ? (
+                  {clickedObject && clickedObject.name.includes("rect-red") ? (
                     <img src="./red_rectangle.png" style={{ width: "50px" }} />
                   ) : null}
+                  {clickedObject && clickedObject.name.includes("rect-blue") ? (
+                    <img src="./blue_rectangle.png" style={{ width: "50px" }} />
+                  ) : null}
+                  {clickedObject && clickedObject.name.includes("rect-green") ? (
+                    <img src="./green_rectangle.png" style={{ width: "50px" }} />
+                  ) : null}
+                  {clickedObject && clickedObject.name.includes("rect-gray") ? (
+                    <img src="./gray_rectangle.png" style={{ width: "50px" }} />
+                  ) : null}
+
                   {clickedObject && clickedObject.name.includes("tree-") ? (
                     <img src="./tree_green.png" style={{ width: "50px" }} />
                   ) : null}
