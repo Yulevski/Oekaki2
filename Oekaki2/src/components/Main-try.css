@@ -49,6 +49,15 @@
         display: flex;
         flex-direction: column;
     }
+    .buttons-objects-selection{
+      display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  height: 100%;
+    }
+    .buttons-objects{
+      width: 50%;
+    }
     .from-here{
       font-size: 20px;
       font-family: Roboto;

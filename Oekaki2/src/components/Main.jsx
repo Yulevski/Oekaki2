@@ -4,7 +4,7 @@ import { fabric } from "fabric";
 import pic from "./pictures/tree_green.png";
 import picbw from "./pictures/tree_green bw.png";
 import pic1 from "./pictures/ike.png";
-import pic1bw from "./pictures/ike bw.png";
+import pic1bw from "./pictures/ike_bw.png";
 import pic2 from "./pictures/japan_tourou.png";
 import pic3 from "./pictures/kouyou_eda_momiji.png";
 import pic3bw from "./pictures/kouyou_eda_momiji bw.png";
@@ -43,13 +43,19 @@ const App = ({themeValue, onomatopeValue}) => {
   const [imageCount, setimageCount] = useState(0);
   const [imageCountbw, setimageCountbw] = useState(0);
   const [imageCount1, setimageCount1] = useState(0);
+  const [imageCount1bw, setimageCount1bw] = useState(0);
   const [imageCount2, setimageCount2] = useState(0);
   const [imageCount3, setimageCount3] = useState(0);
+  const [imageCount3bw, setimageCount3bw] = useState(0);
   const [imageCount4, setimageCount4] = useState(0);
   const [imageCount5, setimageCount5] = useState(0);
+  const [imageCount5bw, setimageCount5bw] = useState(0);
   const [imageCount6, setimageCount6] = useState(0);
+  const [imageCount6bw, setimageCount6bw] = useState(0);
   const [imageCount7, setimageCount7] = useState(0);
+  const [imageCount7bw, setimageCount7bw] = useState(0);
   const [imageCount8, setimageCount8] = useState(0);
+  const [imageCount8bw, setimageCount8bw] = useState(0);
   const [imageCount9, setimageCount9] = useState(0);
 
 
@@ -212,7 +218,7 @@ const App = ({themeValue, onomatopeValue}) => {
       return prevCount + 1;});
     fabric.Image.fromURL(picbw, function (img) {
       const imgWithText = new ImageWithText(img);
-      imgWithText.set({ name: "tree-bw" + Date.now(),
+      imgWithText.set({ name: "treebw-" + Date.now(),
       name2:"木モノトーン",
       prevCount: imageCountbw + 1,
     });
@@ -236,7 +242,20 @@ const App = ({themeValue, onomatopeValue}) => {
       console.log("img name is", imgWithText.name); 
     });
   };
-
+  const addPic1bw = (canvi) => {
+    setimageCount1bw((prevCount) =>{
+      // console.log("prevCount is", prevCount);
+      return prevCount + 1;});
+    fabric.Image.fromURL(pic1bw, function (img) {
+      const imgWithText = new ImageWithText(img);
+      imgWithText.set({ name: "ikebw-" + Date.now(),
+      name2:"池モノトーン",
+      prevCount: imageCount1bw + 1, });
+      canvi.add(imgWithText);
+      // canvi.add(img);
+      console.log("img name is", imgWithText.name); 
+    });
+  };
 
 
   const addPic2 = (canvi) => {
@@ -262,6 +281,20 @@ const App = ({themeValue, onomatopeValue}) => {
       imgWithText.set({ name: "momiji-" + Date.now(),
       name2:"紅葉",
       prevCount: imageCount3 + 1, });
+      canvi.add(imgWithText);
+      // canvi.add(img);
+      console.log("img name is", imgWithText.name); 
+    });
+  };
+  const addPic3bw = (canvi) => {
+    setimageCount3bw((prevCount) =>{
+      // console.log("prevCount is", prevCount);
+      return prevCount + 1;});
+    fabric.Image.fromURL(pic3bw, function (img) {
+      const imgWithText = new ImageWithText(img);
+      imgWithText.set({ name: "momijibw-" + Date.now(),
+      name2:"紅葉モノトーン",
+      prevCount: imageCount3bw + 1, });
       canvi.add(imgWithText);
       // canvi.add(img);
       console.log("img name is", imgWithText.name); 
@@ -295,6 +328,20 @@ const App = ({themeValue, onomatopeValue}) => {
       console.log("img name is", imgWithText.name); 
     });
   };
+  const addPic5bw = (canvi) => {
+    setimageCount5bw((prevCount) =>{
+      // console.log("prevCount is", prevCount);
+      return prevCount + 1;});
+    fabric.Image.fromURL(pic5bw, function (img) {
+      const imgWithText = new ImageWithText(img);
+      imgWithText.set({ name: "taiyobw-" + Date.now(),
+      name2:"太陽モノトーン",
+      prevCount: imageCount5bw + 1, });
+      canvi.add(imgWithText);
+      // canvi.add(img);
+      console.log("img name is", imgWithText.name); 
+    });
+  };
   const addPic6 = (canvi) => {
     setimageCount6((prevCount) =>{
       // console.log("prevCount is", prevCount);
@@ -304,6 +351,20 @@ const App = ({themeValue, onomatopeValue}) => {
       imgWithText.set({ name: "mika-" + Date.now(),
       name2:"三日月",
       prevCount: imageCount6 + 1, });
+      canvi.add(imgWithText);
+      // canvi.add(img);
+      console.log("img name is", imgWithText.name); 
+    });
+  };
+  const addPic6bw = (canvi) => {
+    setimageCount6bw((prevCount) =>{
+      // console.log("prevCount is", prevCount);
+      return prevCount + 1;});
+    fabric.Image.fromURL(pic6bw, function (img) {
+      const imgWithText = new ImageWithText(img);
+      imgWithText.set({ name: "mikabw-" + Date.now(),
+      name2:"三日月モノトーン",
+      prevCount: imageCount6bw + 1, });
       canvi.add(imgWithText);
       // canvi.add(img);
       console.log("img name is", imgWithText.name); 
@@ -323,6 +384,20 @@ const App = ({themeValue, onomatopeValue}) => {
       console.log("img name is", imgWithText.name); 
     });
   };
+  const addPic7bw = (canvi) => {
+    setimageCount7bw((prevCount) =>{
+      // console.log("prevCount is", prevCount);
+      return prevCount + 1;});
+    fabric.Image.fromURL(pic7bw, function (img) {
+      const imgWithText = new ImageWithText(img);
+      imgWithText.set({ name: "mizubw-" + Date.now(),
+      name2:"水モノトーン",
+      prevCount: imageCount7bw + 1, });
+      canvi.add(imgWithText);
+      // canvi.add(img);
+      console.log("img name is", imgWithText.name); 
+    });
+  };
   const addPic8 = (canvi) => {
     setimageCount8((prevCount) =>{
       // console.log("prevCount is", prevCount);
@@ -332,6 +407,20 @@ const App = ({themeValue, onomatopeValue}) => {
       imgWithText.set({ name: "mangetsu-" + Date.now(),
       name2:"満月",
       prevCount: imageCount8 + 1, });
+      canvi.add(imgWithText);
+      // canvi.add(img);
+      console.log("img name is", imgWithText.name); 
+    });
+  };
+  const addPic8bw = (canvi) => {
+    setimageCount8bw((prevCount) =>{
+      // console.log("prevCount is", prevCount);
+      return prevCount + 1;});
+    fabric.Image.fromURL(pic8bw, function (img) {
+      const imgWithText = new ImageWithText(img);
+      imgWithText.set({ name: "mangetsubw-" + Date.now(),
+      name2:"満月モノトーン",
+      prevCount: imageCount8bw + 1, });
       canvi.add(imgWithText);
       // canvi.add(img);
       console.log("img name is", imgWithText.name); 
@@ -501,32 +590,31 @@ const App = ({themeValue, onomatopeValue}) => {
           
           <div className="buttons-main">
             <p1 className="from-here">オブジェクトを<span>クリックして挿入</span></p1>
-            <div className='buttons-background'></div>
-            <button onMouseDown={() => Delete(canvas1)} style={{  height:"25px" }}>Delete</button>
-            <button onMouseDown={() => addRect(canvas1)}><img src="./red_rectangle.png" style={{  height:"50px" }} /></button>
-            <button onMouseDown={() => addRect2(canvas1)}><img src="./blue_rectangle.png" style={{ height:"50px" }} /></button>
-            <button onMouseDown={() => addRect3(canvas1)}><img src="./green_rectangle.png" style={{ height:"50px" }} /></button>
-            <button onMouseDown={() => addRect4(canvas1)}><img src="./gray_rectangle.png" style={{ height:"50px" }} /></button>
-            <button onMouseDown={() => addPic(canvas1)}><img src="./tree_green.png" style={{ height:"50px" }} /></button>
-            <button onMouseDown={() => addPicbw(canvas1)}><img src="./tree_green bw.png" style={{ height:"50px" }} /></button>
-            <button onMouseDown={() => addPic1(canvas1)}><img src="./ike.png" style={{ height:"50px" }} /></button>
-            <button onMouseDown={() => addPic1(canvas1)}><img src="./ike bw.png" style={{ height:"50px" }} /></button>
-            <button onMouseDown={() => addPic2(canvas1)}><img src="./japan_tourou.png" style={{ height:"50px" }} /></button>
-            <button onMouseDown={() => addPic3(canvas1)}><img src="./kouyou_eda_momiji.png" style={{ height:"50px" }} /></button>
-            <button onMouseDown={() => addPic3(canvas1)}><img src="./kouyou_eda_momiji bw.png" style={{ height:"50px" }} /></button>
-            <button onMouseDown={() => addPic4(canvas1)}><img src="./kumo.png" style={{ height:"50px" }} /></button>
-            <button onMouseDown={() => addPic5(canvas1)}><img src="./mark_tenki_hare 1.png" style={{ height:"50px" }} /></button>
-            <button onMouseDown={() => addPic5(canvas1)}><img src="./mark_tenki_hare bw.png" style={{ height:"50px" }} /></button>
-            <button onMouseDown={() => addPic6(canvas1)}><img src="./mark_tenki_moon.png" style={{ height:"50px" }} /></button>
-            <button onMouseDown={() => addPic6(canvas1)}><img src="./mark_tenki_moon bw.png" style={{ height:"50px" }} /></button>
-            <button onMouseDown={() => addPic7(canvas1)}><img src="./mizutamari_hansya 1.png" style={{ height:"50px" }} /></button>
-            <button onMouseDown={() => addPic7(canvas1)}><img src="./mizutamari_hansya bw.png" style={{ height:"50px" }} /></button>
-            <button onMouseDown={() => addPic8(canvas1)}><img src="./space04_moon.png" style={{ height:"50px" }} /></button>
-            <button onMouseDown={() => addPic8(canvas1)}><img src="./space04_moon bw.png" style={{ height:"50px" }} /></button>
-            <button onMouseDown={() => addPic9(canvas1)}><img src="./stone.png" style={{ height:"50px" }} /></button>
-            
+            <button className='buttons-delete' onMouseDown={() => Delete(canvas1)} style={{  height:"25px" }}>Delete</button>
+            <div className='buttons-objects-selection'>
+            <button className='buttons-objects' onMouseDown={() => addRect(canvas1)}><img src="./red_rectangle.png" style={{  height:"50px" }} /></button>
+            <button className='buttons-objects' onMouseDown={() => addRect2(canvas1)}><img src="./blue_rectangle.png" style={{ height:"50px" }} /></button>
+            <button className='buttons-objects' onMouseDown={() => addRect3(canvas1)}><img src="./green_rectangle.png" style={{ height:"50px" }} /></button>
+            <button className='buttons-objects' onMouseDown={() => addRect4(canvas1)}><img src="./gray_rectangle.png" style={{ height:"50px" }} /></button>
+            <button className='buttons-objects' onMouseDown={() => addPic(canvas1)}><img src="./tree_green.png" style={{ height:"50px" }} /></button>
+            <button className='buttons-objects' onMouseDown={() => addPicbw(canvas1)}><img src="./tree_green bw.png" style={{ height:"50px" }} /></button>
+            <button className='buttons-objects' onMouseDown={() => addPic1(canvas1)}><img src="./ike.png" style={{ height:"50px" }} /></button>
+            <button className='buttons-objects' onMouseDown={() => addPic1bw(canvas1)}><img src="./ike_bw.png" style={{ height:"50px" }} /></button>
+            <button className='buttons-objects' onMouseDown={() => addPic3(canvas1)}><img src="./kouyou_eda_momiji.png" style={{ height:"50px" }} /></button>
+            <button className='buttons-objects' onMouseDown={() => addPic3bw(canvas1)}><img src="./kouyou_eda_momiji bw.png" style={{ height:"50px" }} /></button>
+            <button className='buttons-objects' onMouseDown={() => addPic5(canvas1)}><img src="./mark_tenki_hare 1.png" style={{ height:"50px" }} /></button>
+            <button className='buttons-objects' onMouseDown={() => addPic5bw(canvas1)}><img src="./mark_tenki_hare bw.png" style={{ height:"50px" }} /></button>
+            <button className='buttons-objects' onMouseDown={() => addPic6(canvas1)}><img src="./mark_tenki_moon.png" style={{ height:"50px" }} /></button>
+            <button className='buttons-objects' onMouseDown={() => addPic6bw(canvas1)}><img src="./mark_tenki_moon bw.png" style={{ height:"50px" }} /></button>
+            <button className='buttons-objects' onMouseDown={() => addPic7(canvas1)}><img src="./mizutamari_hansya 1.png" style={{ height:"50px" }} /></button>
+            <button className='buttons-objects' onMouseDown={() => addPic7bw(canvas1)}><img src="./mizutamari_hansya bw.png" style={{ height:"50px" }} /></button>
+            <button className='buttons-objects' onMouseDown={() => addPic8(canvas1)}><img src="./space04_moon.png" style={{ height:"50px" }} /></button>
+            <button className='buttons-objects' onMouseDown={() => addPic9(canvas1)}><img src="./stone.png" style={{ height:"50px" }} /></button>
+            <button className='buttons-objects' onMouseDown={() => addPic4(canvas1)}><img src="./kumo.png" style={{ height:"50px" }} /></button>
+            <button className='buttons-objects' onMouseDown={() => addPic2(canvas1)}><img src="./japan_tourou.png" style={{ height:"50px" }} /></button>
+            </div>
             {/* <button onClick={() => console.log(canvas1.getActiveObject())}>Test</button> */}
-          </div>{/*buttons*/}
+          </div>{/*buttons-main*/}
 
       </div>{/*left*/}
 
@@ -557,8 +645,14 @@ const App = ({themeValue, onomatopeValue}) => {
                   {clickedObject && clickedObject.name.includes("tree-") ? (
                     <img src="./tree_green.png" style={{ width: "50px" }} />
                   ) : null}
+                  {clickedObject && clickedObject.name.includes("treebw-") ? (
+                    <img src="./tree_green bw.png" style={{ width: "50px" }} />
+                  ) : null}
                   {clickedObject && clickedObject.name.includes("ike-") ? (
                     <img src="./ike.png" style={{ width: "50px" }} />
+                  ) : null}
+                  {clickedObject && clickedObject.name.includes("ikebw-") ? (
+                    <img src="./ike bw.png" style={{ width: "50px" }} />
                   ) : null}
                   {clickedObject && clickedObject.name.includes("tourou-") ? (
                     <img src="./japan_tourou.png" style={{ width: "50px" }} />
@@ -566,20 +660,35 @@ const App = ({themeValue, onomatopeValue}) => {
                   {clickedObject && clickedObject.name.includes("momiji-") ? (
                     <img src="./kouyou_eda_momiji.png" style={{ width: "50px" }} />
                   ) : null}
+                  {clickedObject && clickedObject.name.includes("momijibw-") ? (
+                    <img src="./kouyou_eda_momiji bw.png" style={{ width: "50px" }} />
+                  ) : null}
                   {clickedObject && clickedObject.name.includes("kumo-") ? (
                     <img src="./kumo.png" style={{ width: "50px" }} />
                   ) : null}
                   {clickedObject && clickedObject.name.includes("taiyo-") ? (
                     <img src="./mark_tenki_hare 1.png" style={{ width: "50px" }} />
                   ) : null}
+                  {clickedObject && clickedObject.name.includes("taiyobw-") ? (
+                    <img src="./mark_tenki_hare bw.png" style={{ width: "50px" }} />
+                  ) : null}
                   {clickedObject && clickedObject.name.includes("mika-") ? (
                     <img src="./mark_tenki_moon.png" style={{ width: "50px" }} />
+                  ) : null}
+                  {clickedObject && clickedObject.name.includes("mikabw-") ? (
+                    <img src="./mark_tenki_moon bw.png" style={{ width: "50px" }} />
                   ) : null}
                   {clickedObject && clickedObject.name.includes("mizu-") ? (
                     <img src="./mizutamari_hansya 1.png" style={{ width: "50px" }} />
                   ) : null}
+                  {clickedObject && clickedObject.name.includes("mizubw-") ? (
+                    <img src="./mizutamari_hansya bw.png" style={{ width: "50px" }} />
+                  ) : null}
                   {clickedObject && clickedObject.name.includes("mangetsu-") ? (
                     <img src="./space04_moon.png" style={{ width: "50px" }} />
+                  ) : null}
+                  {clickedObject && clickedObject.name.includes("mangetsubw-") ? (
+                    <img src="./space04_moon bw.png" style={{ width: "50px" }} />
                   ) : null}
                   {clickedObject && clickedObject.name.includes("ishi-") ? (
                     <img src="./stone.png" style={{ width: "50px" }} />
