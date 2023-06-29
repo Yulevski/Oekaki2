@@ -143,7 +143,7 @@ const App = ({themeValue, onomatopeValue}) => {
       width: 200,
       fill: "#FF5353",
       name: "rect-red" + Date.now(),
-      name2:"四角",
+      name2:"赤四角",
       prevCount: rectCount + 1,
     });
 
@@ -162,7 +162,7 @@ const App = ({themeValue, onomatopeValue}) => {
       width: 200,
       fill: "#54ABFB",
       name: "rect-blue" + Date.now(),
-      name2:"四角",
+      name2:"青四角",
       prevCount: rectCount2 + 1,
     });
     canvi.add(rect);
@@ -176,7 +176,7 @@ const App = ({themeValue, onomatopeValue}) => {
       width: 200,
       fill: "#00DB23",
       name: "rect-green" + Date.now(),
-      name2:"四角",
+      name2:"緑四角",
       prevCount: rectCount3 + 1,
     });
     canvi.add(rect);
@@ -190,7 +190,7 @@ const App = ({themeValue, onomatopeValue}) => {
       width: 200,
       fill: "#898989",
       name: "rect-gray" + Date.now(),
-      name2:"四角",
+      name2:"灰色四角",
       prevCount: rectCount4 + 1,
     });
     canvi.add(rect);
@@ -477,16 +477,25 @@ const App = ({themeValue, onomatopeValue}) => {
     clickedObject.setText(name, e.target.value); //クリックされた（アクティブな）RectWithTextのテキストプロパティを更新
     // console.log("clickedobject",clickedObject);
   };
- 
   const handleSave = () => {
     if (canvas1) {
       const objects = canvas1.getObjects().map((obj) => {
-        const { name, name2, prevcount, descriptionColor, descriptionPosition, descriptionMetaphor, descriptionMove, descriptionContrast, ...rest } = obj.toObject();        
-        
+        const {
+          name,
+          name2,
+          prevcount,
+          descriptionColor,
+          descriptionPosition,
+          descriptionMetaphor,
+          descriptionMove,
+          descriptionContrast,
+          ...rest
+        } = obj.toObject();
+  
         if (obj instanceof fabric.Image && obj.getSrc()) {
           const imgElement = document.createElement('img');
           imgElement.src = obj.getSrc();
-          rest.element = imgElement;
+          rest.src = obj.getSrc(); // Store the source URL in the 'src' property
         }
         return {
           ...rest,
@@ -497,38 +506,49 @@ const App = ({themeValue, onomatopeValue}) => {
           descriptionPosition,
           descriptionMetaphor,
           descriptionMove,
-          descriptionContrast
+          descriptionContrast,
         };
       });
-
-      const json = JSON.stringify(objects);
-
+  
+      const json = JSON.stringify(objects, null, 2);
+  
       // Create a new Blob with the JSON data
       const blob = new Blob([json], { type: 'application/json' });
-
+  
       // Create a temporary anchor element
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
       a.download = 'canvas.json';
       a.click();
-
+  
       // Clean up the temporary anchor element
       URL.revokeObjectURL(a.href);
     }
   };
-
+  
   const handleLoad = (event) => {
     const file = event.target.files[0];
     const reader = new FileReader();
-
+  
     reader.onload = (e) => {
       const contents = e.target.result;
       const objects = JSON.parse(contents);
-
+  
       if (canvas1) {
         canvas1.clear();
         objects.forEach((obj) => {
-          const { name, name2, prevcount, descriptionColor, descriptionPosition, descriptionMetaphor, descriptionMove, descriptionContrast, ...rest } = obj;
+          const {
+            name,
+            name2,
+            prevcount,
+            descriptionColor,
+            descriptionPosition,
+            descriptionMetaphor,
+            descriptionMove,
+            descriptionContrast,
+            src, // Retrieve the source URL from the 'src' property
+            ...rest
+          } = obj;
           if (rest.type === 'rect') {
             const rect = new fabric.Rect(rest);
             rect.name = name;
@@ -541,30 +561,29 @@ const App = ({themeValue, onomatopeValue}) => {
             rect.descriptionContrast = descriptionContrast;
             canvas1.add(rect);
           } else if (rest.type === 'image') {
-            if (element && element.src) {
-            fabric.Image.fromURL(element.src, (image) => {
-              image.name = name;
-              image.name2 = name2;
-              image.prevcount = prevcount;
-              image.descriptionColor = descriptionColor;
-              image.descriptionPosition = descriptionPosition;
-              image.descriptionMetaphor = descriptionMetaphor;
-              image.descriptionMove = descriptionMove;
-              image.descriptionContrast = descriptionContrast;
-              canvas1.add(image);
-            });
+            if (src) { // Check if 'src' is available
+              fabric.Image.fromURL(src, (image) => {
+                image.name = name;
+                image.name2 = name2;
+                image.prevcount = prevcount;
+                image.descriptionColor = descriptionColor;
+                image.descriptionPosition = descriptionPosition;
+                image.descriptionMetaphor = descriptionMetaphor;
+                image.descriptionMove = descriptionMove;
+                image.descriptionContrast = descriptionContrast;
+                canvas1.add(image);
+              });
+            }
           }
-        }
         });
-
+  
         canvas1.renderAll();
       }
     };
-
+  
     reader.readAsText(file);
   };
-
-
+  
   
   return (
 
@@ -606,10 +625,10 @@ const App = ({themeValue, onomatopeValue}) => {
             <button className='buttons-objects' onMouseDown={() => addPic5bw(canvas1)}><img src="./mark_tenki_hare bw.png" style={{ height:"50px" }} /></button>
             <button className='buttons-objects' onMouseDown={() => addPic6(canvas1)}><img src="./mark_tenki_moon.png" style={{ height:"50px" }} /></button>
             <button className='buttons-objects' onMouseDown={() => addPic6bw(canvas1)}><img src="./mark_tenki_moon bw.png" style={{ height:"50px" }} /></button>
-            <button className='buttons-objects' onMouseDown={() => addPic7(canvas1)}><img src="./mizutamari_hansya 1.png" style={{ height:"50px" }} /></button>
-            <button className='buttons-objects' onMouseDown={() => addPic7bw(canvas1)}><img src="./mizutamari_hansya bw.png" style={{ height:"50px" }} /></button>
+            <button className='buttons-objects' onMouseDown={() => addPic7(canvas1)}><img src="./mizutamari_hansya 1.png" style={{ width:"80px" }} /></button>
+            <button className='buttons-objects' onMouseDown={() => addPic7bw(canvas1)}><img src="./mizutamari_hansya bw.png" style={{ width:"80px" }} /></button>
             <button className='buttons-objects' onMouseDown={() => addPic8(canvas1)}><img src="./space04_moon.png" style={{ height:"50px" }} /></button>
-            <button className='buttons-objects' onMouseDown={() => addPic9(canvas1)}><img src="./stone.png" style={{ height:"50px" }} /></button>
+            <button className='buttons-objects' onMouseDown={() => addPic9(canvas1)}><img src="./stone.png" style={{width:'80px', height:"50px" }} /></button>
             <button className='buttons-objects' onMouseDown={() => addPic4(canvas1)}><img src="./kumo.png" style={{ height:"50px" }} /></button>
             <button className='buttons-objects' onMouseDown={() => addPic2(canvas1)}><img src="./japan_tourou.png" style={{ height:"50px" }} /></button>
             </div>
@@ -652,7 +671,7 @@ const App = ({themeValue, onomatopeValue}) => {
                     <img src="./ike.png" style={{ width: "50px" }} />
                   ) : null}
                   {clickedObject && clickedObject.name.includes("ikebw-") ? (
-                    <img src="./ike bw.png" style={{ width: "50px" }} />
+                    <img src="./ike_bw.png" style={{ width: "50px" }} />
                   ) : null}
                   {clickedObject && clickedObject.name.includes("tourou-") ? (
                     <img src="./japan_tourou.png" style={{ width: "50px" }} />
