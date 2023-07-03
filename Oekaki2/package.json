@@ -17,6 +17,8 @@
     "react-markdown": "^8.0.5",
     "react-moveable": "^0.46.1",
     "react-router-dom": "^5.3.4",
+    "react-sessionstorage": "^1.0.5",
+    "react-use": "^17.4.0",
     "react-zoom-pan-pinch": "^2.6.1"
   },
   "devDependencies": {

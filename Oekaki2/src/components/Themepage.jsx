@@ -3,7 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import './Themepage.css';
 
 
-function Themepage({themeValue,setThemeValue }) {
+function Themepage({username, themeValue,setThemeValue }) {
   // const [text, setText] = useState('');
   const [selectedButton, setSelectedButton] = useState(null);
 
@@ -20,7 +20,7 @@ function Themepage({themeValue,setThemeValue }) {
   return( 
     <>
     <div className="Theme-page">
-
+    <h2>Logged in as: {username}</h2>
       <div className='top-theme'>
           <h2 className='theme-selection24'>①この中から</h2>
           <h2 className='theme-selection32'>感情がイメージしやすいテーマ</h2>
